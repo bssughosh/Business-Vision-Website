@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width,initial-scale=1" name="viewport">
+    <title>Login</title>
+</head>
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #main {
+        width: 35%;
+        margin: 28vh auto;
+    }
+    .tabBtn {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        box-shadow: 2px 2px 5px #333;
+    }
+    .login1, .login2 {
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        background-color: #6a93a0;
+        text-align: center;
+        color: #fff;
+        font-size: 25px;
+        padding: 10px;
+    }
+    .active {
+        background-color: #eee;
+        color: #000;
+    }
+    .slogin, .clogin {
+        width: 100%;
+        background-color: #eee;
+        padding: 20px 30px 30px 30px;
+        box-shadow: 2px 2px 5px #333;
+    }
+    .clogin {
+        display: none;
+    }
+    .inp {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        font-size: 20px;
+        border: 2px solid #888;
+        background-color: #fff;
+        color: #666;
+    }
+    .inp:focus {
+        outline: none;
+        border: 2px solid #555;
+    }
+    .logBtn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #5476d0;
+        color: #fff;
+        cursor: pointer;
+    }
+    .logBtn:focus {
+        outline: none;
+    }
+    .logBtn:active {
+        border: none;
+        margin-top: 5px;
+    }
+    .forgot {
+        font-size: 18px;
+        color: #444;
+    }
+    .fr {
+        column-span: all;
+        column-count: 2;
+        text-align: center;
+    }
+    h2 {
+        text-align: center;
+        padding-bottom: 15px;
+        color: #333;
+        font-size: 30px;
+        font-variant: small-caps;
+    }
+</style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".login2").click(function () {
+            $(".clogin").show();
+            $(".slogin").hide();
+            $(".login2").addClass('active');
+            $(".login1").removeClass('active');
+        });
+        $(".login1").click(function () {
+            $(".slogin").show();
+            $(".clogin").hide();
+            $(".login1").addClass('active');
+            $(".login2").removeClass('active');
+        });
+    });
+</script>
+
+<body>
+<div id="main">
+    <div class="tabBtn">
+        <a class="login1 active" href="#">Seller</a>
+        <a class="login2" href="#">Customer</a>
+    </div>
+    <div class="slogin">
+        <form action="#" id="slgn-box" method="post">
+            {% csrf_token %}
+            <input autofocus class="inp" name="username1" placeholder="Email" required type="email"><br>
+            <input class="inp" name="password1" placeholder="Password" required type="password"><br>
+            <div class="fr">
+                <p><a class="forgot" href="#">Register</a></p>
+                <p><a class="forgot" href="accounts/password_reset">Forgot Password?</a></p><br>
+            </div>
+            <input class="logBtn" name="submit" type="submit" value="LOG IN">
+        </form>
+    </div>
+    <div class="clogin">
+        <form action="#" id="clgn-box" method="post">
+            {% csrf_token %}
+            <input autofocus class="inp" name="username2" placeholder="Email" required type="email"><br>
+            <input class="inp" name="password2" placeholder="Password" required type="password"><br>
+            <div class="fr">
+                <p><a class="forgot" href="#">Register</a></p>
+                <p><a class="forgot" href="#">Forgot Password?</a></p><br>
+            </div>
+            <input class="logBtn" name="submit" type="submit" value="LOG IN">
+        </form>
+    </div>
+</div>
+</body>
+</html>

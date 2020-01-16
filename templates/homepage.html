@@ -9,161 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/homestyles.css' %}">
-    <style type="text/css">
-
-    </style>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".login2").click(function () {
-                $(".clogin").show();
-                $(".slogin").hide();
-                $(".login2").addClass('active');
-                $(".login1").removeClass('active');
-            });
-            $(".login1").click(function () {
-                $(".slogin").show();
-                $(".clogin").hide();
-                $(".login1").addClass('active');
-                $(".login2").removeClass('active');
-            });
-        });
-    </script>
-    <style>
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 100px; /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0, 0, 0); /* Fallback color */
-            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-        }
-
-        /* Modal Content */
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        /* The Close Button */
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-        {##main {#}
-        {#width: 35%;#}
-        {#    margin: 28vh auto;#}
-        {#}#}
-        .tabBtn {
-            display: -webkit-flex;
-            display: -moz-flex;
-            display: -ms-flex;
-            display: -o-flex;
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            box-shadow: 2px 2px 5px #333;
-        }
-        .login1, .login2 {
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            background-color: #6a93a0;
-            text-align: center;
-            color: #fff;
-            font-size: 25px;
-            padding: 10px;
-        }
-        .active {
-            background-color: #eee;
-            color: #000;
-        }
-        .slogin, .clogin {
-            width: 100%;
-            background-color: #eee;
-            padding: 20px 30px 30px 30px;
-            box-shadow: 2px 2px 5px #333;
-        }
-        .clogin {
-            display: none;
-        }
-        .inp {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            font-size: 20px;
-            border: 2px solid #888;
-            background-color: #fff;
-            color: #666;
-        }
-        .inp:focus {
-            outline: none;
-            border: 2px solid #555;
-        }
-        .logBtn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            font-size: 20px;
-            font-weight: bold;
-            background-color: #5476d0;
-            color: #fff;
-            cursor: pointer;
-        }
-        .logBtn:focus {
-            outline: none;
-        }
-        .logBtn:active {
-            border: none;
-            margin-top: 5px;
-        }
-        .forgot {
-            font-size: 18px;
-            color: #444;
-        }
-        .fr {
-            column-span: all;
-            column-count: 2;
-            text-align: center;
-        }
-        h2 {
-            text-align: center;
-            padding-bottom: 15px;
-            color: #333;
-            font-size: 30px;
-            font-variant: small-caps;
-        }
-    </style>
 </head>
 
 <body>
@@ -177,7 +22,7 @@
         <ul class="navbar-nav d-flex align-items-center">
             {% if not user.is_authenticated %}
                 <li><a href="#">Home</a></li>
-                <li><a href="#" id="myBtn">Login</a></li>
+                <li><a href="login">Login</a></li>
                 <li>
                     <div class="dropdown">
                         <button class="dropbtn">Register</button>
@@ -190,73 +35,12 @@
             {% else %}
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Hello,<br>{{ user.first_name }}</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
             {% endif %}
             <li><a href="#">Contact Us</a></li>
         </ul>
     </div>
 </nav>
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div id="main">
-            <div class="tabBtn">
-                <a class="login1 active" href="#">Seller</a>
-                <a class="login2" href="#">Customer</a>
-            </div>
-            <div class="slogin">
-                <form action="#" id="slgn-box" method="post">
-                    {% csrf_token %}
-                    <input autofocus class="inp" name="username1" placeholder="Email" required type="email"><br>
-                    <input class="inp" name="password1" placeholder="Password" required type="password"><br>
-                    <div class="fr">
-                        <p><a class="forgot" href="#">Register</a></p>
-                        <p><a class="forgot" href="accounts/password_reset">Forgot Password?</a></p><br>
-                    </div>
-                    <input class="logBtn" name="submit" type="submit" value="LOG IN">
-                </form>
-            </div>
-            <div class="clogin">
-                <form action="#" id="clgn-box" method="post">
-                    {% csrf_token %}
-                    <input autofocus class="inp" name="username2" placeholder="Email" required type="email"><br>
-                    <input class="inp" name="password2" placeholder="Password" required type="password"><br>
-                    <div class="fr">
-                        <p><a class="forgot" href="#">Register</a></p>
-                        <p><a class="forgot" href="#">Forgot Password?</a></p><br>
-                    </div>
-                    <input class="logBtn" name="submit" type="submit" value="LOG IN">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    // Get the modal
-    var modal = document.getElementById("myModal");
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
 </body>
 </html>

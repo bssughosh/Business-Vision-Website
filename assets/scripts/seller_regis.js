@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#b1').click(function () {
         var error_email = '';
         var error_name = '';
@@ -67,9 +68,7 @@ $(document).ready(function () {
     });
 
 
-
     $('#b2').click(function () {
-
         $('#p2').removeClass('active active_tab1');
         $('#p2').removeAttr('href data-toggle');
         $('#p2id').removeClass('active in');
@@ -79,5 +78,67 @@ $(document).ready(function () {
         $('#p1').attr('href', '#p1id');
         $('#p1').attr('data-toggle', 'tab');
         $('#p1id').addClass('active in');
+    });
+
+
+    $('#b3').click(function () {
+        var error_cname = '';
+        var error_gst = '';
+        var error_address = '';
+        var error_pin = '';
+        var error_state = '';
+
+        if ($.trim($('#cname').val()).length == 0) {
+            error_first_name = 'Company Name is required';
+            $('#error_cname').text(error_cname);
+            $('#cname').addClass('has-error');
+        }
+
+        if ($.trim($('#gst').val()).length == 0) {
+            error_gst = 'GST Number is required';
+            $('#error_gst').text(error_gst);
+            $('#gst').addClass('has-error');
+        }
+        if ($.trim($('#address').val()).length == 0) {
+            error_address = 'Address is required';
+            $('#error_address').text(error_address);
+            $('#address').addClass('has-error');
+        }
+        if ($.trim($('#pin').val()).length == 0) {
+            error_pin = 'Pincode is required';
+            $('#error_pin').text(error_pin);
+            $('#pin').addClass('has-error');
+        }
+        if ($.trim($('#state').val()).length == 0) {
+            error_state = 'State is required';
+            $('#error_state').text(error_state);
+            $('#state').addClass('has-error');
+        }
+        if (error_cname != '' || error_gst != '' || error_address != '' || error_state != '' || error_pin != '') {
+            return false;
+        } else {
+            $('#p2').removeClass('active active_tab1');
+            $('#p2').removeAttr('href data-toggle');
+            $('#p2id').removeClass('active');
+            $('#p2').addClass('inactive_tab1');
+            $('#p3').removeClass('inactive_tab1');
+            $('#p3').addClass('active_tab1 active');
+            $('#p3').attr('href', '#p3id');
+            $('#p3').attr('data-toggle', 'tab');
+            $('#p3id').addClass('active in');
+        }
+    });
+
+
+    $('#b4').click(function () {
+        $('#p3').removeClass('active active_tab1');
+        $('#p3').removeAttr('href data-toggle');
+        $('#p3id').removeClass('active in');
+        $('#p3').addClass('inactive_tab1');
+        $('#p2').removeClass('inactive_tab1');
+        $('#p2').addClass('active_tab1 active');
+        $('#p2').attr('href', '#p2id');
+        $('#p2').attr('data-toggle', 'tab');
+        $('#p2id').addClass('active in');
     });
 });

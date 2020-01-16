@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#main {
+    width: 35%;
+    margin: 28vh auto;
+}
+
+.tabBtn {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 2px 2px 5px #333;
+}
+
+.login1, .login2 {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    background-color: #6a93a0;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    padding: 10px;
+}
+
+.active {
+    background-color: #eee;
+    color: #000;
+}
+
+.slogin, .clogin {
+    width: 100%;
+    background-color: #eee;
+    padding: 20px 30px 30px 30px;
+    box-shadow: 2px 2px 5px #333;
+}
+
+.clogin {
+    display: none;
+}
+
+.inp {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    border: 2px solid #888;
+    background-color: #fff;
+    color: #666;
+}
+
+.inp:focus {
+    outline: none;
+    border: 2px solid #555;
+}
+
+.logBtn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #5476d0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.logBtn:focus {
+    outline: none;
+}
+
+.logBtn:active {
+    border: none;
+    margin-top: 5px;
+}
+
+.forgot {
+    font-size: 18px;
+    color: #444;
+}
+
+.fr {
+    column-span: all;
+    column-count: 2;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    padding-bottom: 15px;
+    color: #333;
+    font-size: 30px;
+    font-variant: small-caps;
+}

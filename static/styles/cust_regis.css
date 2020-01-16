@@ -1,0 +1,21 @@
+.box {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.active_tab1 {
+    background-color: #fff;
+    color: #333;
+    font-weight: 600;
+}
+
+.inactive_tab1 {
+    background-color: #f5f5f5;
+    color: #333;
+    cursor: not-allowed;
+}
+
+.has-error {
+    border-color: #cc0000;
+    background-color: #ffff99;
+}

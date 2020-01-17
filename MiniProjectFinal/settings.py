@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'gst_field',
     'customer',
     'seller',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -142,3 +143,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'giftoflifebloodbank@gmail.com'
 EMAIL_HOST_PASSWORD = '2017btechcs'
 LOGOUT_REDIRECT_URL = '/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

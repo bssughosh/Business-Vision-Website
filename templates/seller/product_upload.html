@@ -1,14 +1,13 @@
+{% extends 'seller/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Upload Your Product</title>
-    <link href="{% static 'styles/product_upload.css' %}"/>
-</head>
-<body>
 
+<link href="{% static 'styles/product_upload.css' %}"/>
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
 
-<script type="text/javascript" src="{% static 'scripts/product_upload.js' %}"></script>
-</body>
-</html>
+        <button type="submit" name="Submit">Upload</button>
+    </form>
+    <script type="text/javascript" src="{% static 'scripts/product_upload.js' %}"></script>
+{% endblock %}

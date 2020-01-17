@@ -3,16 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Business Vision - Home</title>
+    <title>Customer Account</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/homestyles.css' %}">
 </head>
-
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">BV</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
@@ -33,11 +31,6 @@
                     </div>
                 </li>
             {% else %}
-                {% if user.last_name == '1' %}
-                    <meta http-equiv="refresh" content="0; url = cust/"/>
-                {% else %}
-                    <meta http-equiv="refresh" content="0; url = seller/"/>
-                {% endif %}
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Hello,<br>{{ user.first_name }}</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
@@ -46,6 +39,8 @@
         </ul>
     </div>
 </nav>
+{% block content %}
 
+{% endblock %}
 </body>
 </html>

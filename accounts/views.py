@@ -17,16 +17,26 @@ def login(request):
         p2 = request.POST.get('password2', False)
 
         if not u1:
+            a = UserData.objects.all()
+            x = []
+            for i in a:
+                x.append(i.email)
             user = auth.authenticate(username=u2, password=p2)
-            if user is not None:
+            if user is not None and u2 in x:
                 auth.login(request, user)
-            print('c')
+            else:
+                return redirect('/')
             return redirect('/cust')
         else:
+            a = SellerData.objects.all()
+            x = []
+            for i in a:
+                x.append(i.email)
             user = auth.authenticate(username=u1, password=p1)
-            if user is not None:
+            if user is not None and u1 in x:
                 auth.login(request, user)
-            print('s')
+            else:
+                return redirect('/')
             return redirect('/seller')
     return render(request, 'registration/login.html')
 
@@ -45,7 +55,7 @@ def cust_regis(request):
                 return redirect('/')
             else:
                 user = User.objects.create_user(username=e, password=p1, email=e,
-                                                first_name=n)
+                                                first_name=n, last_name='1')
                 user.save();
                 p = UserData(password=p1, email=e, name=n, mobile=m, dob=d)
                 p.save();
@@ -77,7 +87,7 @@ def seller_regis(request):
                 return redirect('/')
             else:
                 user = User.objects.create_user(username=e, password=p1, email=e,
-                                                first_name=n)
+                                                first_name=n, last_name='0')
                 user.save();
                 p = SellerData(name=n, email=e, password=p1, mobile=m, comp_name=c, address=ca, gst=g, state=s,
                                pincode=p)

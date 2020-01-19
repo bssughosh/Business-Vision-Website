@@ -19,14 +19,14 @@
     <div class="collapse navbar-collapse d-flex flex-row-reverse align-items-center" id="navbarToggler">
         <ul class="navbar-nav d-flex align-items-center">
             {% if not user.is_authenticated %}
-                <li><a href="#">Home</a></li>
-                <li><a href="login">Login</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Login</a></li>
                 <li>
                     <div class="dropdown">
                         <button class="dropbtn">Register</button>
                         <div class="dropdown-content">
-                            <a href="register/seller" style="color:black">Seller</a>
-                            <a href="register/cust" style="color:black">Customer</a>
+                            <a href="/register/seller" style="color:black">Seller</a>
+                            <a href="/register/cust" style="color:black">Customer</a>
                         </div>
                     </div>
                 </li>

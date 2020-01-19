@@ -1,0 +1,14 @@
+{% extends 'seller/base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+
+    <p>{{ data.name }}</p>
+    <p>{{ data.email }}</p>
+    <p>{{ data.mobile }}</p>
+    <p>{{ data.gst }}</p>
+
+
+    <script type="text/javascript" src="{% static 'scripts/profile.js' %}"></script>
+{% endblock %}

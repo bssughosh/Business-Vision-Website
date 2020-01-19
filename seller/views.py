@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ProductUploadForm
 from django.contrib.auth.models import User, auth
-
+from accounts.models import SellerData
 
 # Create your views here.
 def s1(request):
@@ -21,3 +21,10 @@ def product_upload(request):
     return render(request, 'seller/product_upload.html', {
         'form': form
     })
+
+
+def profile(request):
+    x = SellerData.objects.all()
+    for y in x:
+        if y.email == request.user.username:
+            return render(request, 'seller/profile.html', {'data': y})

@@ -5,39 +5,75 @@
     <meta charset="UTF-8" content="width=device-width,initial-scale=1" name="viewport">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <style>
+        @font-face {
+            font-family: Poppins-Regular;
+            src: url('{% static '/fonts/poppins/Poppins-Regular.ttf' %}');
+        }
+
+        @font-face {
+            font-family: Poppins-Medium;
+            src: url('{% static '/fonts/poppins/Poppins-Medium.ttf' %}');
+        }
+
+        @font-face {
+            font-family: Poppins-Bold;
+            src: url('{% static '/fonts/poppins/Poppins-Bold.ttf' %}');
+        }
+
+        @font-face {
+            font-family: Poppins-SemiBold;
+            src: url('{% static '/fonts/poppins/Poppins-SemiBold.ttf' %}');
+        }
+    </style>
 </head>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="{% static 'scripts/login.js' %}"></script>
-
 <body>
-<div id="main">
-    <div class="tabBtn">
-        <a class="login1 active" href="#">Seller</a>
-        <a class="login2" href="#">Customer</a>
-    </div>
-    <div class="slogin">
-        <form action="#" id="slgn-box" method="post">
-            {% csrf_token %}
-            <input autofocus class="inp" name="username1" placeholder="Email" required type="email"><br>
-            <input class="inp" name="password1" placeholder="Password" required type="password"><br>
-            <div class="fr">
-                <p><a class="forgot" href="#">Register</a></p>
-                <p><a class="forgot" href="accounts/password_reset">Forgot Password?</a></p><br>
-            </div>
-            <input class="logBtn" name="submit" type="submit" value="LOG IN">
-        </form>
-    </div>
-    <div class="clogin">
-        <form action="#" id="clgn-box" method="post">
-            {% csrf_token %}
-            <input autofocus class="inp" name="username2" placeholder="Email" required type="email"><br>
-            <input class="inp" name="password2" placeholder="Password" required type="password"><br>
-            <div class="fr">
-                <p><a class="forgot" href="#">Register</a></p>
-                <p><a class="forgot" href="#">Forgot Password?</a></p><br>
-            </div>
-            <input class="logBtn" name="submit" type="submit" value="LOG IN">
-        </form>
+<div class="limiter">
+    <div class="container-login100" style="background-image: url('{% static 'images/bg-01.jpg' %}');">
+        <div class="wrap-login100">
+            <form class="login100-form" method="post">
+                {% csrf_token %}
+                <span class="login100-form-title">
+  						Log in
+  					</span>
+                <div class="wrap-input100">
+                    <input class="input100" type="text" id="email" name="email" placeholder="Email">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+
+                <div class="wrap-input100">
+                    <input class="input100" type="password" id="pass" name="pass" placeholder="Password">
+                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit" id="b1" name="b1">
+                        Login
+                    </button>
+                </div>
+                <div class="dropdown text-center">
+                    <a class="dropbtn txt1" href="#">
+                        Register
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="/register/seller" style="color:black">Seller</a>
+                        <a href="/register/cust" style="color:black">Customer</a>
+                    </div>
+                </div>
+                <div class="forg">
+                    <a href="/accounts/password_reset" class="txt1">Forgot Password</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 </body>

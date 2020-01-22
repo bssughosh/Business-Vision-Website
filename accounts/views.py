@@ -11,33 +11,49 @@ def home(request):
 
 def login(request):
     if request.method == 'POST':
-        u1 = request.POST.get('username1', False)
-        p1 = request.POST.get('password1', False)
-        u2 = request.POST.get('username2', False)
-        p2 = request.POST.get('password2', False)
+        u1 = request.POST.get('email', False)
+        p1 = request.POST.get('pass', False)
+        a = list(UserData.objects.filter(email=u1).values_list('email', flat=True))
+        b = list(SellerData.objects.filter(email=u1).values_list('email', flat=True))
 
-        if not u1:
-            a = UserData.objects.all()
-            x = []
-            for i in a:
-                x.append(i.email)
-            user = auth.authenticate(username=u2, password=p2)
-            if user is not None and u2 in x:
+        if u1 in a:
+            user = auth.authenticate(username=u1, password=p1)
+            if user is not None:
                 auth.login(request, user)
             else:
                 return redirect('/')
             return redirect('/cust')
-        else:
-            a = SellerData.objects.all()
-            x = []
-            for i in a:
-                x.append(i.email)
+
+        if u1 in b:
             user = auth.authenticate(username=u1, password=p1)
-            if user is not None and u1 in x:
+            if user is not None:
                 auth.login(request, user)
             else:
                 return redirect('/')
             return redirect('/seller')
+
+        # if not u1:
+        #     a = UserData.objects.all()
+        #     x = []
+        #     for i in a:
+        #         x.append(i.email)
+        #     user = auth.authenticate(username=u2, password=p2)
+        #     if user is not None and u2 in x:
+        #         auth.login(request, user)
+        #     else:
+        #         return redirect('/')
+        #     return redirect('/cust')
+        # else:
+        #     a = SellerData.objects.all()
+        #     x = []
+        #     for i in a:
+        #         x.append(i.email)
+        #     user = auth.authenticate(username=u1, password=p1)
+        #     if user is not None and u1 in x:
+        #         auth.login(request, user)
+        #     else:
+        #         return redirect('/')
+        #     return redirect('/seller')
     return render(request, 'registration/login.html')
 
 

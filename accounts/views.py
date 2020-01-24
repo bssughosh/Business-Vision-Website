@@ -32,28 +32,6 @@ def login(request):
                 return redirect('/')
             return redirect('/seller')
 
-        # if not u1:
-        #     a = UserData.objects.all()
-        #     x = []
-        #     for i in a:
-        #         x.append(i.email)
-        #     user = auth.authenticate(username=u2, password=p2)
-        #     if user is not None and u2 in x:
-        #         auth.login(request, user)
-        #     else:
-        #         return redirect('/')
-        #     return redirect('/cust')
-        # else:
-        #     a = SellerData.objects.all()
-        #     x = []
-        #     for i in a:
-        #         x.append(i.email)
-        #     user = auth.authenticate(username=u1, password=p1)
-        #     if user is not None and u1 in x:
-        #         auth.login(request, user)
-        #     else:
-        #         return redirect('/')
-        #     return redirect('/seller')
     return render(request, 'registration/login.html')
 
 

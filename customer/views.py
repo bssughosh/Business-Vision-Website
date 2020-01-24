@@ -11,23 +11,20 @@ def c1(request):
 
 def dis(request):
     x = ProductData.objects.all()
-    # if request.method == 'POST':
-    #     pid = request.POST.get('pid', False)
-    #     print(pid)
-    flag = False
+    l = len(list(x))
+    c = []
+    for i in range(0, l):
+        string = 'obj-' + str(i)
+        c.append(string)
     if request.method == 'POST':
-        s = request.POST.get('pname',False)
-        if not s:
-            for y in x:
-                if s == y.p_name:
-                    print('Found')
-                    flag =True
-                    return render(request, 'customer/product_display.html', {'prods1': y})
+        for i in c:
+            y = request.POST.get(i, False)
+            print(y)
 
     return render(request, 'customer/product_display.html', {'prods': x})
 
 
-def desc(request):
+def desc(request, object_id):
     # if request.method == 'POST':
     #     pid = request.body
     #     pid1 = pid.split('-')
@@ -38,7 +35,8 @@ def desc(request):
     #
     # else:
     #     y = ProductData()
-    return render(request, 'customer/product_description.html')
+    product = ProductData.objects.get(id=object_id)
+    return render(request, 'customer/product_description.html', {'data': product})
 
 
 def profile(request):

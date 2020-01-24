@@ -4,20 +4,16 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'styles/product_display.css' %}">
 
-    <form method="post">
-    {% csrf_token %}
-        <label for="pname"></label><input id="pname" class="pname" name="pname" placeholder="Search">
-        <button type="submit">Submit</button>
-    </form>
-
     <div class="wrapper grid">
         {% for i in prods %}
             <div class="item">
                 <img src="{{ i.p_img.url }}" alt="Image"><br>
-                <a href="#" class="clicker">{{ i.p_name }}</a>
+                <a class="clicker" href="/cust/description/{{ i.id }}">{{ i.p_name }}</a>
             </div>
         {% endfor %}
     </div>
+
+
 
     <script type="text/javascript" src="{% static 'scripts/product_display.js' %}"></script>
 {% endblock %}

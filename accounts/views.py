@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from .models import UserData, SellerData
 from django.contrib import messages
+from pandas.io.json import json_normalize
+import requests
 
 
 # Create your views here.
@@ -15,7 +17,6 @@ def login(request):
         p1 = request.POST.get('pass', False)
         a = list(UserData.objects.filter(email=u1).values_list('email', flat=True))
         b = list(SellerData.objects.filter(email=u1).values_list('email', flat=True))
-
         if u1 in a:
             user = auth.authenticate(username=u1, password=p1)
             if user is not None:
@@ -64,6 +65,7 @@ def cust_regis(request):
 
 
 def seller_regis(request):
+    secret_key = 'XlLJvJ8Kv8YqvgYo602K2SKWS9U2'
     if request.method == 'POST':
         e = request.POST.get('email', False)
         n = request.POST.get('name', False)
@@ -75,21 +77,31 @@ def seller_regis(request):
         s = request.POST.get('state', False)
         p = request.POST.get('pin', False)
         g = request.POST.get('gst', False)
-        if p1 == p2:
-            if User.objects.filter(username=e).exists():
-                messages.info(request, 'Username taken')
-                return redirect('/')
+        st = s.upper()
+        cn = c.upper()
+        url = 'https://appyflow.in/api/verifyGST?gstNo='+g+'&key_secret='+secret_key
+        x = requests.get(url).json()
+        tname = x['taxpayerInfo']['lgnm'].upper()
+        st1 = x['taxpayerInfo']['pradr']['addr']['stcd'].upper()
+        pin = x['taxpayerInfo']['pradr']['addr']['pncd']
+        if str(st) == str(st1) and str(cn) == str(tname) and str(p) == str(pin):
+            if p1 == p2:
+                if User.objects.filter(username=e).exists():
+                    messages.info(request, 'Username taken')
+                    return redirect('/')
+                else:
+                    user = User.objects.create_user(username=e, password=p1, email=e,
+                                                    first_name=n, last_name='0')
+                    user.save();
+                    p = SellerData(name=n, email=e, password=p1, mobile=m, comp_name=c, address=ca, gst=g, state=s,
+                                   pincode=p)
+                    p.save();
+                    messages.info(request, 'User registered')
+                    auth.login(request, user)
+                    return redirect('/')
             else:
-                user = User.objects.create_user(username=e, password=p1, email=e,
-                                                first_name=n, last_name='0')
-                user.save();
-                p = SellerData(name=n, email=e, password=p1, mobile=m, comp_name=c, address=ca, gst=g, state=s,
-                               pincode=p)
-                p.save();
-                messages.info(request, 'User registered')
-                auth.login(request, user)
-                return redirect('/')
+                messages.info(request, 'Password not matching')
+            return redirect('/')
         else:
-            messages.info(request, 'Password not matching')
-        return redirect('/')
+            print('Not Matching')
     return render(request, 'register/seller_regis.html')

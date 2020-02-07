@@ -12,30 +12,22 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">BV</a>
+    <a class="navbar-brand" href="#">Business Vision</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex flex-row-reverse align-items-center" id="navbarToggler">
         <ul class="navbar-nav d-flex align-items-center">
             {% if not user.is_authenticated %}
-                <li><a href="/">Home</a></li>
+
                 <li><a href="/login">Login</a></li>
-                <li>
-                    <div class="dropdown">
-                        <button class="dropbtn">Register</button>
-                        <div class="dropdown-content">
-                            <a href="/register/seller" style="color:black">Seller</a>
-                            <a href="/register/cust" style="color:black">Customer</a>
-                        </div>
-                    </div>
-                </li>
+
             {% else %}
-                <li><a href="#">Home</a></li>
+
                 <li><a href="#">Hello,<br>{{ user.first_name }}</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% endif %}
-            <li><a href="#">Contact Us</a></li>
+
         </ul>
     </div>
 </nav>

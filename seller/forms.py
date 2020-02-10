@@ -2,6 +2,7 @@ from django import forms
 from .models import ProductData
 from django.utils.translation import ugettext_lazy as _
 
+
 class ProductUploadForm(forms.ModelForm):
     class Meta:
         model = ProductData

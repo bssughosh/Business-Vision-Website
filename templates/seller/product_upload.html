@@ -5,8 +5,9 @@
 {% block content %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-
+        <table>
+            {{ form.as_table }}
+        </table>
         <button type="submit" name="Submit">Upload</button>
     </form>
     <script type="text/javascript" src="{% static 'scripts/product_upload.js' %}"></script>

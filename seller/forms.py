@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 class ProductUploadForm(forms.ModelForm):
     class Meta:
         model = ProductData
-        fields = ('p_name', 'p_img', 'p_price', 'min_q',)
+        fields = ('p_name', 'p_img', 'p_price', 'min_q', 'p_desc')
         labels = {
             'p_name': _('Enter Product Name'),
             'p_img': _('Provide Image of Product'),

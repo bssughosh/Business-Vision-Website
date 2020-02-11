@@ -2,6 +2,7 @@ from django.shortcuts import render
 from seller.models import ProductData
 from accounts.models import UserData
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Q
 
 
 # Create your views here.
@@ -25,16 +26,6 @@ def dis(request):
 
 
 def desc(request, object_id):
-    # if request.method == 'POST':
-    #     pid = request.body
-    #     pid1 = pid.split('-')
-    #     pid = pid1[1]
-    #     print(pid)
-    #     x = ProductData.objects.all()
-    #     y = x[int(pid)]
-    #
-    # else:
-    #     y = ProductData()
     product = ProductData.objects.get(id=object_id)
     return render(request, 'customer/product_description.html', {'data': product})
 
@@ -44,3 +35,13 @@ def profile(request):
     for y in x:
         if y.email == request.user.username:
             return render(request, 'customer/profile.html', {'data': y})
+
+
+def search(request):
+    query = request.GET.get('q', None)
+    x = ProductData.objects.none()
+    if query is not None:
+        lookups = Q(p_name__icontains=query) | Q(p_desc__icontains=query)
+        x = ProductData.objects.filter(lookups).distinct()
+        return render(request, 'customer/product_display.html', {'prods': x})
+    return render(request, 'customer/product_display.html', {'prods': x})

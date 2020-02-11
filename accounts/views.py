@@ -105,3 +105,5 @@ def seller_regis(request):
         else:
             print('Not Matching')
     return render(request, 'register/seller_regis.html')
+
+

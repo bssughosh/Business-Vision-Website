@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import ProductUploadForm
 from django.contrib.auth.models import User, auth
 from accounts.models import SellerData
+from .models import ProductData
+from django.db.models import Q
 
 # Create your views here.
 def s1(request):
@@ -28,3 +30,14 @@ def profile(request):
     for y in x:
         if y.email == request.user.username:
             return render(request, 'seller/profile.html', {'data': y})
+
+
+def search(request):
+    query = request.GET.get('q', None)
+    x = ProductData.objects.none()
+
+    if query is not None:
+        lookups = Q(p_name__icontains=query) | Q(p_desc__icontains=query)
+        x = ProductData.objects.filter(lookups).distinct()
+        return render(request, 'customer/product_display.html', {'prods': x})
+    return render(request, 'customer/product_display.html', {'prods': x})

@@ -7,4 +7,5 @@ urlpatterns = [
     path('display/', views.dis, name='display'),
     re_path(r'^description/(?P<object_id>\d+)/$', views.desc, name='description'),
     path('profile/', views.profile, name="profile"),
+    path('query/', views.search, name='query'),
 ]

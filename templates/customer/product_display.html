@@ -3,7 +3,7 @@
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'styles/product_display.css' %}">
-
+    {% if request.GET.q is not None %}
     <div class="wrapper grid">
         {% for i in prods %}
             <div class="item">
@@ -12,8 +12,8 @@
             </div>
         {% endfor %}
     </div>
-
-
-
+    {% else %}
+        <p>No items found</p>
+    {% endif %}
     <script type="text/javascript" src="{% static 'scripts/product_display.js' %}"></script>
 {% endblock %}

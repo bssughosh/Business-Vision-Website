@@ -14,17 +14,22 @@ class ProductUploadForm(forms.ModelForm):
             'min_q': _('Enter Minimum quantity to be purchased'),
         }
         widgets = {
-            'p_name': forms.TextInput(
-                attrs={
-                    'class': 'inp',
-                }
-            ),
+            # 'p_name': forms.TextInput(
+            #     attrs={
+            #         'class': 'inp',
+            #     }
+            # ),
             'p_price': forms.TextInput(
                 attrs={
                     'class': 'inp',
                 }
             ),
             'min_q': forms.TextInput(
+                attrs={
+                    'class': 'inp',
+                }
+            ),
+            'p_dec': forms.Textarea(
                 attrs={
                     'class': 'inp',
                 }

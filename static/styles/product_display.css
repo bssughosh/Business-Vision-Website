@@ -4,7 +4,7 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-gap: 5px;
-        grid-auto-rows: minmax(100px, auto);
+        grid-auto-rows: minmax(250px, auto);
         margin-right: 17%;
         margin-left: 17%;
         margin-top: 100px;
@@ -15,7 +15,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 10px;
-        grid-auto-rows: minmax(100px, auto);
+        grid-auto-rows: minmax(250px, auto);
         margin-right: 20%;
         margin-left: 20%;
         margin-top: 100px;
@@ -26,7 +26,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 10px;
-        grid-auto-rows: minmax(100px, auto);
+        grid-auto-rows: minmax(250px, auto);
         margin-right: 20%;
         margin-left: 20%;
         margin-top: 100px;
@@ -37,7 +37,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 10px;
-        grid-auto-rows: minmax(100px, auto);
+        grid-auto-rows: minmax(250px, auto);
         margin-right: 20%;
         margin-left: 20%;
         margin-top: 100px;
@@ -48,7 +48,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;
-        grid-auto-rows: minmax(100px, auto);
+        grid-auto-rows: minmax(250px, auto);
         margin-right: 20%;
         margin-left: 20%;
         margin-top: 100px;
@@ -59,7 +59,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;
-        grid-auto-rows: minmax(100px, auto);
+        grid-auto-rows: minmax(250px, auto);
         /*padding-left: 50px;*/
         /*padding-right: 50px;*/
         margin-right: 20%;

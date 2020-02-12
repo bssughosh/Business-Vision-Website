@@ -5,17 +5,20 @@ from accounts.models import SellerData
 from .models import ProductData
 from django.db.models import Q
 
+
 # Create your views here.
 def s1(request):
     return render(request, 'seller/s1.html')
 
 
 def product_upload(request):
+    b = list(SellerData.objects.filter(email=request.user.username).values_list('name', flat=True))
     if request.method == 'POST':
         form = ProductUploadForm(request.POST, request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.seller_name = request.user.username
+            instance.s_name = b[0]
             instance.save();
             return redirect('/seller')
     else:

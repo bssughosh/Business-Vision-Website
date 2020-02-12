@@ -1,7 +1,8 @@
-{% extends 'customer/base.html' %}
+{% extends 'search/base.html' %}
 {% load static %}
 
 {% block content %}
+
     <link rel="stylesheet" href="{% static 'styles/product_display.css' %}">
     <div class="wrapper grid">
         {% for i in prods %}
@@ -12,4 +13,6 @@
         {% endfor %}
     </div>
     <script type="text/javascript" src="{% static 'scripts/product_display.js' %}"></script>
+
+
 {% endblock %}

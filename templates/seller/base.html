@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Seller Account</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+{#    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">#}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/homestyles.css' %}">
@@ -16,6 +16,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
         <span class="navbar-toggler-icon"></span>
     </button>
+    {% include 'search/search-form.html' %}
     <div class="collapse navbar-collapse d-flex flex-row-reverse align-items-center" id="navbarToggler">
         <ul class="navbar-nav d-flex align-items-center">
             {% if not user.is_authenticated %}
@@ -32,7 +33,7 @@
     </div>
 </nav>
 
-{% include 'search-form.html' %}
+
 {% block content %}
 
 {% endblock %}

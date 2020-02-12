@@ -3,6 +3,7 @@ from seller.models import ProductData
 from accounts.models import UserData
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
+from accounts.models import SellerData
 
 
 # Create your views here.
@@ -27,7 +28,9 @@ def dis(request):
 
 def desc(request, object_id):
     product = ProductData.objects.get(id=object_id)
-    return render(request, 'customer/product_description.html', {'data': product})
+    list_products = ProductData.objects.filter(p_name__icontains=product.p_name)
+    return render(request, 'customer/product_description.html',
+                  {'data': product, 'listdata': list_products})
 
 
 def profile(request):
@@ -37,11 +40,4 @@ def profile(request):
             return render(request, 'customer/profile.html', {'data': y})
 
 
-def search(request):
-    query = request.GET.get('q', None)
-    x = ProductData.objects.none()
-    if query is not None:
-        lookups = Q(p_name__icontains=query) | Q(p_desc__icontains=query)
-        x = ProductData.objects.filter(lookups).distinct()
-        return render(request, 'customer/product_display.html', {'prods': x})
-    return render(request, 'customer/product_display.html', {'prods': x})
+

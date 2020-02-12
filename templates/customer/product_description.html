@@ -4,14 +4,24 @@
     <link rel="stylesheet" href="{% static 'styles/product_description.css' %}">
 
     <div class="leftdiv">
-        <img src="{{ data.p_img.url }}" class="limg" alt="">
+        <table class="newtable">
+            <tr>
+                <td><img src="{{ data.p_img.url }}" class="limg" alt=""></td>
+                <td><h3>{{ data.p_name }}</h3></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><h6>Minimum quantity to be purchased : {{ data.min_q }}</h6></td>
+            </tr>
+        </table>
+
         <div class="des">
-            <h3>{{ data.p_name }}</h3>
-            <h6>Minimum quantity to be purchased : {{ data.min_q }}</h6>
-            <br>
             <hr>
             <p>{{ data.p_desc }}</p>
             <hr>
+        </div>
+        <div id="showdata">
+
         </div>
     </div>
     <div class="rightdiv">
@@ -23,7 +33,7 @@
             </tr>
             {% for d in listdata %}
                 <tr>
-                    <td>{{ d.s_name }}</td>
+                    <td><a>{{ d.s_name }}</a></td>
                     <td>{{ d.p_price }}</td>
                 </tr>
             {% endfor %}

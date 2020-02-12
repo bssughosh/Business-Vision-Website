@@ -1,4 +1,30 @@
+.leftdiv {
+    width: 50%;
+    float: left;
+}
+
+.rightdiv {
+    width: 50%;
+    float: right;
+}
+
+.newtable {
+    table-border-color-dark: black;
+}
+
 .limg {
     width: 200px;
     height: 200px;
+}
+
+.des {
+    float: bottom;
+}
+/*.des {*/
+/*    height: 200px;*/
+/*    text-align: center;*/
+/*}*/
+
+.ner{
+    float: bottom;
 }

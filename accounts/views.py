@@ -22,6 +22,7 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
             else:
+                messages.info(request, 'Login Unsuccessful')
                 return redirect('/')
             return redirect('/cust')
 
@@ -30,6 +31,7 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
             else:
+                messages.info(request, 'Login Unsuccessful')
                 return redirect('/')
             return redirect('/seller')
 
@@ -79,31 +81,36 @@ def seller_regis(request):
         g = request.POST.get('gst', False)
         st = s.upper()
         cn = c.upper()
-        url = 'https://appyflow.in/api/verifyGST?gstNo='+g+'&key_secret='+secret_key
+        url = 'https://appyflow.in/api/verifyGST?gstNo=' + g + '&key_secret=' + secret_key
         x = requests.get(url).json()
-        tname = x['taxpayerInfo']['lgnm'].upper()
-        st1 = x['taxpayerInfo']['pradr']['addr']['stcd'].upper()
-        pin = x['taxpayerInfo']['pradr']['addr']['pncd']
-        if str(st) == str(st1) and str(cn) == str(tname) and str(p) == str(pin):
-            if p1 == p2:
-                if User.objects.filter(username=e).exists():
-                    messages.info(request, 'Username taken')
-                    return redirect('/')
-                else:
-                    user = User.objects.create_user(username=e, password=p1, email=e,
-                                                    first_name=n, last_name='0')
-                    user.save();
-                    p = SellerData(name=n, email=e, password=p1, mobile=m, comp_name=c, address=ca, gst=g, state=s,
-                                   pincode=p)
-                    p.save();
-                    messages.info(request, 'User registered')
-                    auth.login(request, user)
-                    return redirect('/')
-            else:
-                messages.info(request, 'Password not matching')
-            return redirect('/')
+        print(x)
+        if 'error' in x.keys():
+            if x['error']:
+                messages.info(request, 'GST Details not matching')
+                return redirect('/')
         else:
-            print('Not Matching')
+            tname = x['taxpayerInfo']['lgnm'].upper()
+            st1 = x['taxpayerInfo']['pradr']['addr']['stcd'].upper()
+            pin = x['taxpayerInfo']['pradr']['addr']['pncd']
+            if str(st) == str(st1) and str(cn) == str(tname) and str(p) == str(pin):
+                if p1 == p2:
+                    if User.objects.filter(username=e).exists():
+                        messages.info(request, 'Username taken')
+                        return redirect('/')
+                    else:
+                        user = User.objects.create_user(username=e, password=p1, email=e,
+                                                        first_name=n, last_name='0')
+                        user.save();
+                        p = SellerData(name=n, email=e, password=p1, mobile=m, comp_name=c, address=ca, gst=g, state=s,
+                                       pincode=p)
+                        p.save();
+                        messages.info(request, 'User registered')
+                        auth.login(request, user)
+                        return redirect('/')
+                else:
+                    messages.info(request, 'Password not matching')
+                return redirect('/')
+            else:
+                messages.info(request, 'GST Details not matching')
+                return redirect('/')
     return render(request, 'register/seller_regis.html')
-
-

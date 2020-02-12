@@ -4,6 +4,7 @@ from django.contrib.auth.models import User, auth
 from accounts.models import SellerData
 from .models import ProductData
 from django.db.models import Q
+from django.contrib import messages
 
 
 # Create your views here.
@@ -20,6 +21,10 @@ def product_upload(request):
             instance.seller_name = request.user.username
             instance.s_name = b[0]
             instance.save();
+            messages.info(request, 'Product uploaded successfully!')
+            return redirect('/seller')
+        else:
+            messages.info(request, 'Please Upload images only in JPG format and fill out all fields')
             return redirect('/seller')
     else:
         form = ProductUploadForm()

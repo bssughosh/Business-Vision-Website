@@ -12,6 +12,7 @@ class ProductUploadForm(forms.ModelForm):
             'p_img': _('Provide Image of Product'),
             'p_price': _('Enter Product Price'),
             'min_q': _('Enter Minimum quantity to be purchased'),
+            'p_desc': _('Enter Product Description'),
         }
         widgets = {
             # 'p_name': forms.TextInput(

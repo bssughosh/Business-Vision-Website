@@ -4,6 +4,7 @@ from accounts.models import UserData
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from accounts.models import SellerData
+from django.contrib import messages
 
 
 # Create your views here.
@@ -38,6 +39,3 @@ def profile(request):
     for y in x:
         if y.email == request.user.username:
             return render(request, 'customer/profile.html', {'data': y})
-
-
-

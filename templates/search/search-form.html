@@ -1,8 +1,10 @@
-<form class="form-inline" method="get" action="/search/query/">
-    <div class="input-group">
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/search.css' %}">
+<form action="/search/query/" class="form-inline" method="get">
+    <div class="input-group search-form">
         <input class="form-control" type="text" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
         <span class="input-group-button">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-success" type="submit">Search</button>
         </span>
     </div>
 </form>

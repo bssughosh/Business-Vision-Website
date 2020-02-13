@@ -3,41 +3,58 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'styles/product_description.css' %}">
 
-    <div class="leftdiv">
-        <table class="newtable">
-            <tr>
-                <td><img src="{{ data.p_img.url }}" class="limg" alt=""></td>
-                <td><h3>{{ data.p_name }}</h3></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><h6>Minimum quantity to be purchased : {{ data.min_q }}</h6></td>
-            </tr>
-        </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <img src="{{ data.p_img.url }}" class="limg" alt="">
+                        </div>
+                        <div class="col-sm">
+                            <h3>{{ data.p_name }}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <hr>
+                            <h6>Minimum quantity to be purchased : {{ data.min_q }}</h6>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <p class="font-weight-bold">Seller selling {{ data.p_name }}</p>
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                    <tr class="table-row">
+                        <th>Seller Name</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for d in listdata %}
+                        <tr class="table-row" onclick="window.location='#{{ d.seller_name }}'; $('#{{ d.seller_name }}').show();">
+                            <td><a>{{ d.s_name }}</a></td>
+                            <td>{{ d.p_price }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
 
-        <div class="des">
-            <hr>
-            <p>{{ data.p_desc }}</p>
-            <hr>
+                </table>
+            </div>
         </div>
-        <div id="showdata">
-
+        <div class="row">
+            <div class="col-sm">
+                {% for d in listdata %}
+                    <div id="{{ d.seller_name }}" class="prof font-weight-normal">
+                        {{ d.s_name }}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
-    <div class="rightdiv">
-        <p>Seller selling {{ data.p_name }}</p>
-        <table>
-            <tr>
-                <th>Seller Name</th>
-                <th>Price</th>
-            </tr>
-            {% for d in listdata %}
-                <tr>
-                    <td><a>{{ d.s_name }}</a></td>
-                    <td>{{ d.p_price }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
+
     <script type="text/javascript" src="{% static 'scripts/product_description.js' %}"></script>
 {% endblock %}

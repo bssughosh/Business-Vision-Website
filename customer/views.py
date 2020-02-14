@@ -39,3 +39,8 @@ def profile(request):
     for y in x:
         if y.email == request.user.username:
             return render(request, 'customer/profile.html', {'data': y})
+
+
+def showpage(request, object_id, p_id):
+    s = SellerData.objects.get(email=object_id)
+    return render(request, 'customer/showpg.html', {'data': s})

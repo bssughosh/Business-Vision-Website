@@ -35,23 +35,21 @@
                     </thead>
                     <tbody>
                     {% for d in listdata %}
-                        <tr class="table-row" onclick="window.location='#{{ d.seller_name }}'; $('#{{ d.seller_name }}').show();">
+                        <tr class="table-row" onclick="window.location='{{ d.seller_name }}';">
                             <td><a>{{ d.s_name }}</a></td>
                             <td>{{ d.p_price }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
-
                 </table>
             </div>
         </div>
         <div class="row">
             <div class="col-sm">
-                {% for d in listdata %}
-                    <div id="{{ d.seller_name }}" class="prof font-weight-normal">
-                        {{ d.s_name }}
-                    </div>
-                {% endfor %}
+                <h6>{{ data.p_desc }}</h6>
+            </div>
+            <div class="col-sm">
+
             </div>
         </div>
     </div>

@@ -83,7 +83,7 @@ def editpage(request, object_id):
     else:
         context = {'form': form,
                    'error': 'The form was not updated successfully. Please enter in a title and content'}
-        return render(request, 'seller/product_upload.html', context)
+        return render(request, 'seller/edit_prod.html', context)
 
 
 def delete_record(request, object_id):

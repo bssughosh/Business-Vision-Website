@@ -12,7 +12,8 @@
     </form>
     <form method="post">
         {% csrf_token %}
-        <button type="submit" name="deleter">Delete Product</button>
+        <button type="submit" name="deleter">Delete</button>
     </form>
+
     <script type="text/javascript" src="{% static 'scripts/product_upload.js' %}"></script>
 {% endblock %}

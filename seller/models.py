@@ -3,6 +3,9 @@ from io import BytesIO
 from PIL import Image
 from django.core.files import File
 from smartfields import fields
+from django.db.models.signals import pre_delete
+from django.dispatch.dispatcher import receiver
+
 
 # image compression method
 def compress(image):
@@ -57,3 +60,5 @@ class ProductData(models.Model):
         new_image = compress(new_image1)
         self.p_img = new_image
         super().save(*args, **kwargs)
+
+

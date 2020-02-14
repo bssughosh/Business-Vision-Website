@@ -1,4 +1,4 @@
-{% extends 'customer/base.html' %}
+{% extends 'seller/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -8,10 +8,10 @@
             <div class="item">
                 <img src="{{ i.p_img.url }}" alt="Image"><br>
                 {% if user.is_authenticated %}
-                <a class="clicker" href="/cust/description/{{ i.id }}">{{ i.p_name }}</a>
-            {% else %}
+                    <a class="clicker" href="/seller/edit/{{ i.id }}">{{ i.p_name }}</a>
+                {% else %}
                     <a class="clicker" href="/login">{{ i.p_name }}</a>
-            {% endif %}
+                {% endif %}
             </div>
         {% endfor %}
     </div>

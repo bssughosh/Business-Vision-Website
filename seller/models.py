@@ -43,13 +43,17 @@ class ProductData(models.Model):
     p_desc = models.TextField(null=True)
 
     def save(self, *args, **kwargs):
-        png = Image.open(self.p_img)
-        png.load()
-        background = Image.new("RGB", png.size, (255, 255, 255))
-        background.paste(png, mask=png.split()[3])
-        new_im = BytesIO()
-        background.save(new_im, 'JPEG', quality=80)
-        new_image1 = File(new_im, name=self.p_img.name)
+        x = self.p_img.name.split('.')
+        if x[-1] == 'png' or x[-1] == 'PNG':
+            png = Image.open(self.p_img)
+            png.load()
+            background = Image.new("RGB", png.size, (255, 255, 255))
+            background.paste(png, mask=png.split()[3])
+            new_im = BytesIO()
+            background.save(new_im, 'JPEG', quality=80)
+            new_image1 = File(new_im, name=self.p_img.name)
+        else:
+            new_image1 = self.p_img
         new_image = compress(new_image1)
         self.p_img = new_image
         super().save(*args, **kwargs)

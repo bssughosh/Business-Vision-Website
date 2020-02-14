@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductUploadForm
 from django.contrib.auth.models import User, auth
 from accounts.models import SellerData
@@ -49,3 +49,33 @@ def search(request):
         x = ProductData.objects.filter(lookups).distinct()
         return render(request, 'customer/product_display.html', {'prods': x})
     return render(request, 'customer/product_display.html', {'prods': x})
+
+
+def browse(request):
+    p = ProductData.objects.all()
+    return render(request, 'seller/products_display.html', {'prods': p})
+
+
+def my_prod(request):
+    s_email = request.user.username
+    p = ProductData.objects.filter(seller_name__exact=s_email)
+    return render(request, 'seller/my_prod.html', {'prods': p})
+
+
+def editpage(request, object_id):
+    obj = get_object_or_404(ProductData, id=object_id)
+    form = ProductUploadForm(request.POST or None, request.FILES or None, instance=obj)
+    context = {'form': form}
+
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.save()
+        messages.info(request, 'Product updated successfully!')
+        context = {'form': form}
+        # return render(request, 'seller/product_upload.html', context)
+        return redirect('/seller')
+
+    else:
+        context = {'form': form,
+                   'error': 'The form was not updated successfully. Please enter in a title and content'}
+        return render(request, 'seller/product_upload.html', context)

@@ -67,6 +67,11 @@ def editpage(request, object_id):
     form = ProductUploadForm(request.POST or None, request.FILES or None, instance=obj)
     context = {'form': form}
 
+    if request.method == 'POST' and 'deleter' in request.POST:
+        ProductData.objects.filter(id=object_id).delete()
+        messages.info(request, 'Product Deleted')
+        return redirect('/seller')
+
     if form.is_valid():
         obj = form.save(commit=False)
         obj.save()
@@ -79,3 +84,9 @@ def editpage(request, object_id):
         context = {'form': form,
                    'error': 'The form was not updated successfully. Please enter in a title and content'}
         return render(request, 'seller/product_upload.html', context)
+
+
+def delete_record(request, object_id):
+    ProductData.objects.filter(id=object_id).delete()
+    messages.info(request, 'Product Deleted')
+    return redirect('/seller')

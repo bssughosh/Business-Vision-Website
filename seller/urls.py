@@ -9,4 +9,5 @@ urlpatterns = [
     path('my_prod/', views.my_prod, name='my_prod'),
     path('browse/', views.browse, name='browse'),
     path('edit/<int:object_id>/', views.editpage, name='editpage'),
+    # path('deleter/<int:object_id>/', views.delete_record, name='delete_record'),
 ]

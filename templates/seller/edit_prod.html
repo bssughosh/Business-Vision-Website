@@ -10,5 +10,9 @@
         </table>
         <button type="submit" name="Submit">Upload</button>
     </form>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="deleter">Delete Product</button>
+    </form>
     <script type="text/javascript" src="{% static 'scripts/product_upload.js' %}"></script>
 {% endblock %}

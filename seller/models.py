@@ -44,6 +44,7 @@ class ProductData(models.Model):
     p_price = models.CharField(max_length=10)
     min_q = models.CharField(max_length=10)
     p_desc = models.TextField(null=True)
+    tag = models.CharField(max_length=20, null=True)
 
     def save(self, *args, **kwargs):
         x = self.p_img.name.split('.')

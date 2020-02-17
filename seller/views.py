@@ -5,6 +5,7 @@ from accounts.models import SellerData
 from .models import ProductData
 from django.db.models import Q
 from django.contrib import messages
+import os
 
 
 # Create your views here.
@@ -68,7 +69,9 @@ def editpage(request, object_id):
     context = {'form': form}
 
     if request.method == 'POST' and 'deleter' in request.POST:
+        file = obj.p_img.path
         ProductData.objects.filter(id=object_id).delete()
+        os.remove(file)
         messages.info(request, 'Product Deleted')
         return redirect('/seller')
 
@@ -87,6 +90,9 @@ def editpage(request, object_id):
 
 
 def delete_record(request, object_id):
+    obj = get_object_or_404(ProductData, id=object_id)
+    file = obj.p_img.path
     ProductData.objects.filter(id=object_id).delete()
+    os.remove(file)
     messages.info(request, 'Product Deleted')
     return redirect('/seller')

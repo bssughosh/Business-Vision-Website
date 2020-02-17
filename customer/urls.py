@@ -8,5 +8,4 @@ urlpatterns = [
     re_path(r'^description/(?P<object_id>\d+)/$', views.desc, name='description'),
     path('profile/', views.profile, name="profile"),
     path('description/<int:p_id>/<str:object_id>/', views.showpage, name='showpage'),
-
 ]

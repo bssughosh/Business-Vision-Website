@@ -3,11 +3,43 @@
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
-
-    <p>{{ data.name }}</p>
-    <p>{{ data.email }}</p>
-    <p>{{ data.mobile }}</p>
-    <p>{{ data.gst }}</p>
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col pic">
+                            <img src="{% static 'images/images.png' %}" class="rounded-circle" id="prof" alt="User">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col ad1">
+                            <img src="{% static 'images/adding.png' %}" alt="Ad in progress">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 ad">
+                <p class="text-justify b">NAME : </p>
+                <p class="text-justify d">{{data.name}}</p>
+                <p class="text-justify b">Number : </p>
+                <p class="text-justify d">{{ data.mobile }}</p>
+                <p class="text-justify b">Email ID : </p>
+                <p class="text-justify d">{{ data.email }}</p>
+                <p class="text-justify b">GST : </p>
+                <p class="text-justify d">{{ data.gst }}</p>
+                <p class="text-justify b">Business Name : </p>
+                <p class="text-justify d">{{ data.comp_name }}</p>
+                <p class="text-justify b">Business Address : </p>
+                <P class="text-justify d">{{ data.address }}<br>{{ data.state }} - {{ data.pincode }}</P>
+                <p class="text-justify b">Password : </p>
+                <p class="text-justify d">**********</p>
+            </div>
+            <div class="col-3 ad1">
+                <img src="{% static 'images/adding.png' %}" alt="Ad in progress">
+            </div>
+        </div>
+    </div>
 
 
     <script type="text/javascript" src="{% static 'scripts/profile.js' %}"></script>

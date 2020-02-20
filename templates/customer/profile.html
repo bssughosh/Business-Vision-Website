@@ -4,9 +4,38 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
 
-    <p>{{ data.name }}</p>
-    <p>{{ data.email }}</p>
-    <p>{{ data.mobile }}</p>
-
+    <div class="container my-auto main">
+        <div class="row">
+            <div class="col-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col pic">
+                            <img src="{% static 'images/images.png' %}" class="rounded-circle" id="prof" alt="User">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col ad1">
+                            <img src="{% static 'images/adding.png' %}" alt="Ad in progress">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 ad">
+                <p class="text-justify b">NAME : </p>
+                <P class="text-justify d">{{ data.name }}</P>
+                <p class="text-justify b">Number : </p>
+                <P class="text-justify d">{{ data.mobile }}</P>
+                <p class="text-justify b">Email ID : </p>
+                <P class="text-justify d">{{ data.email }}</P>
+                <p class="text-justify b">Date of Birth : </p>
+                <P class="text-justify d">{{ data.dob }}</P>
+                <p class="text-justify b">Password : </p>
+                <P class="text-justify d">**********</P>
+            </div>
+            <div class="col-3 ad1 ad2">
+                <img src="{% static 'images/adding.png' %}" alt="Ad in progress">
+            </div>
+        </div>
+    </div>
     <script type="text/javascript" src="{% static 'scripts/profile.js' %}"></script>
 {% endblock %}

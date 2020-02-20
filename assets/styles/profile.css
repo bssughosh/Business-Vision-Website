@@ -27,8 +27,9 @@ img {
 .ad {
     background-color: rgba(212, 209, 209, 0.973);
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px;
     box-shadow: 5px 5px 3px black;
+    margin-top: 15px;
 }
 
 @keyframes blink {

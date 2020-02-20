@@ -6,7 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="{% static 'styles/cust_regis.css' %}"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/cust_regis.css' %}"/>
 </head>
 <body>
 <br>
@@ -16,36 +17,39 @@
         {% csrf_token %}
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active_tab1" style="border:1px solid #ccc" id="p1">Personal
+                <a class="nav-link active_tab1" id="p1">Personal
                     Details</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link inactive_tab1" id="p2" style="border:1px solid #ccc">Login
+                <a class="nav-link inactive_tab1" id="p2">Login
                     Credentials</a>
             </li>
         </ul>
-        <div class="tab-content" style="margin-top:16px;">
+        <div class="tab-content">
             <div class="tab-pane active" id="p1id">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Personal Details</div>
+                    <div class="panel1">
+                        <div class="panel-heading">Personal Details</div>
+                    </div>
+
                     <div class="panel-body">
                         <div class="form-group">
-                            <label>Full Name</label>
+                            <label for="name">Full Name</label>
                             <input type="text" name="name" id="name" class="form-control"/>
                             <span id="error_name" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label>Mobile Number</label>
+                            <label for="mobile">Mobile Number</label>
                             <input type="text" name="mobile" id="mobile" class="form-control"/>
                             <span id="error_mobile" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label>Email Address</label>
+                            <label for="email">Email Address</label>
                             <input type="email" name="email" id="email" class="form-control"/>
                             <span id="error_email" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label>Date of Birth</label>
+                            <label for="dob">Date of Birth</label>
                             <input type="date" name="dob" id="dob" class="form-control"/>
                         </div>
                         <br>
@@ -60,15 +64,17 @@
             </div>
             <div class="tab-pane fade" id="p2id">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Login Credentials</div>
+                    <div class="panel1">
+                        <div class="panel-heading">Login Credentials</div>
+                    </div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label>Enter Password</label>
+                            <label for="password1">Enter Password</label>
                             <input type="password" name="password1" id="password1" class="form-control"/>
                             <span id="error_password1" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label>Confirm Password</label>
+                            <label for="password2">Confirm Password</label>
                             <input type="password" name="password2" id="password2" class="form-control"/>
                             <span id="error_password2" class="text-danger"></span>
                         </div>

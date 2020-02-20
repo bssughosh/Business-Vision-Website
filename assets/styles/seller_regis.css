@@ -1,21 +1,50 @@
 .box {
     width: 800px;
-    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .active_tab1 {
-    background-color: #fff;
-    color: #333;
+    background-color: #0063B2FF;
+    color: #FFF;
     font-weight: 600;
 }
 
 .inactive_tab1 {
-    background-color: #f5f5f5;
+    background-color: #9CC3D5FF;
     color: #333;
     cursor: not-allowed;
+    border: 1px solid #ccc;
+}
+
+#p1, #p2 {
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
 .has-error {
     border-color: #cc0000;
     background-color: #ffff99;
+}
+
+.panel-heading {
+    font-weight: 600;
+}
+
+.panel1 {
+    background-color: #94d3ac;
+}
+
+.panel-body {
+    background-color: #ccedd2;
+}
+
+.tab-content{
+    box-shadow: 5px 5px 3px grey;
+}
+
+.form-control{
+    box-shadow: 3px 3px 2px gray;
 }

@@ -16,17 +16,17 @@
     background-color: #9CC3D5FF;
     color: #333;
     cursor: not-allowed;
-    border: 1px solid #ccc;
+    border: 1px solid #CCC;
 }
 
 #p1, #p2 {
-    border: 1px solid #ccc;
+    border: 1px solid #CCC;
     border-radius: 10px;
 }
 
 .has-error {
-    border-color: #cc0000;
-    background-color: #ffff99;
+    border-color: #CC0000;
+    background-color: #FFFF99;
 }
 
 .panel-heading {
@@ -34,17 +34,17 @@
 }
 
 .panel1 {
-    background-color: #94d3ac;
+    background-color: #94D3AC;
 }
 
 .panel-body {
-    background-color: #ccedd2;
+    background-color: #CCEDD2;
 }
 
-.tab-content{
+.tab-content {
     box-shadow: 5px 5px 3px grey;
 }
 
-.form-control{
+.form-control {
     box-shadow: 3px 3px 2px gray;
 }

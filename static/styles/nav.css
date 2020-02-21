@@ -1,4 +1,4 @@
-.navbar-nav a{
+.navbar-nav a {
     color: white;
     text-decoration: none;
 }
@@ -7,19 +7,19 @@
     margin-left: 60%;
 }
 
-#sr{
+#sr {
     float: right;
 }
 
-.navbar-nav li{
+.navbar-nav li {
     text-align: center;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     background-color: #0063B2FF;
 }
 
-.dropdown-item{
+.dropdown-item {
     color: white;
 }
 

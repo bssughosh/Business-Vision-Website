@@ -18,7 +18,7 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Business Vision</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
         <span class="navbar-toggler-icon"></span>
@@ -33,8 +33,6 @@
                 {% else %}
                     <meta http-equiv="refresh" content="0; url = seller/"/>
                 {% endif %}
-                <li><a href="#">Hello,<br>{{ user.first_name }}</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
             {% endif %}
         </ul>
     </div>

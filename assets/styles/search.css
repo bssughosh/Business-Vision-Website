@@ -1,18 +1,19 @@
-.form-inline{
-    margin-left: auto;
-    margin-right: auto;
-}
-.search-form{
+.form-inline {
     margin-left: auto;
     margin-right: auto;
 }
 
-.btn-success{
-    background-color: #dddddd;
+.search-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-success {
+    background-color: #9CC3D5FF;
     color: black;
 }
 
-.btn-success:hover{
-    background-color: #ffffff;
+.btn-success:hover {
+    background-color: #94d3ac;
     color: black;
 }

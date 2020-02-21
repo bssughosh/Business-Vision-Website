@@ -4,6 +4,11 @@
     border-radius: 10px;
 }
 
+.card{
+    margin: 5px;
+    border: none;
+}
+
 @media (min-width: 1281px) {
     .wrapper {
         display: grid;

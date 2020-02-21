@@ -1,8 +1,5 @@
 {% extends 'customer/base.html' %}
-
 {% block content %}
-    <a href="display">Display</a>
-    <a href="profile">Profile</a>
     {% if messages %}
         {% for message in messages %}
             {% if message.tags %}
@@ -10,4 +7,5 @@
             {% endif %}
         {% endfor %}
     {% endif %}
+    <meta http-equiv="refresh" content="0; url = /cust/display"/>
 {% endblock %}

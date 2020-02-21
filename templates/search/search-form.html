@@ -1,5 +1,5 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'styles/search.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/search.css' %}">
 <form action="/search/query/" class="form-inline" method="get">
     <div class="input-group search-form">
         <input class="form-control" type="text" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">

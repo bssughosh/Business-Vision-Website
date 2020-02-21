@@ -1,0 +1,28 @@
+.navbar-nav a{
+    color: white;
+    text-decoration: none;
+}
+
+.xyz {
+    margin-left: 60%;
+}
+
+#sr{
+    float: right;
+}
+
+.navbar-nav li{
+    text-align: center;
+}
+
+.dropdown-menu{
+    background-color: #0063B2FF;
+}
+
+.dropdown-item{
+    color: white;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}

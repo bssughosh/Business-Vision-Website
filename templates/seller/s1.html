@@ -1,9 +1,6 @@
 {% extends 'seller/base.html' %}
 {% block content %}
-    <a href="upload">Upload</a><br>
-    <a href="profile">Profile</a><br>
-    <a href="my_prod">View My Products</a><br>
-    <a href="browse">Browse Products</a><br>
+
     {% if messages %}
         {% for message in messages %}
             {% if message.tags %}
@@ -11,4 +8,5 @@
             {% endif %}
         {% endfor %}
     {% endif %}
+    <meta http-equiv="refresh" content="0; url = /seller/browse"/>
 {% endblock %}

@@ -1,19 +1,31 @@
 {% extends 'seller/base.html' %}
 {% load static %}
 
-<link href="{% static 'styles/product_upload.css' %}"/>
+
 {% block content %}
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <button type="submit" name="Submit">Upload</button>
-    </form>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" name="deleter">Delete</button>
-    </form>
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/product_upload.css' %}"/>
+    <div class="card main1 align-middle">
+        <div class="card-header">
+            Upload your product
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <button type="submit" name="Submit" class="btn btn-success">Upload</button>
+            </form>
+            <br>
+            <br>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="deleter" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+
 
     <script type="text/javascript" src="{% static 'scripts/product_upload.js' %}"></script>
 {% endblock %}

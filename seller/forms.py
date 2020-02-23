@@ -1,6 +1,7 @@
 from django import forms
 from .models import ProductData
 from django.utils.translation import ugettext_lazy as _
+import string
 
 
 class ProductUploadForm(forms.ModelForm):
@@ -22,17 +23,30 @@ class ProductUploadForm(forms.ModelForm):
             # ),
             'p_price': forms.TextInput(
                 attrs={
-                    'class': 'inp',
+                    'class': 'form-control inp',
                 }
             ),
             'min_q': forms.TextInput(
                 attrs={
-                    'class': 'inp',
+                    'class': 'form-control inp',
                 }
             ),
             'p_dec': forms.Textarea(
                 attrs={
-                    'class': 'inp',
+                    'class': 'form-control inp',
                 }
             ),
         }
+
+    def clean(self):
+        super(ProductUploadForm, self).clean()
+        p_price = str(self.cleaned_data.get('p_price'))
+        min_q = str(self.cleaned_data.get('min_q'))
+
+        if not p_price.isdigit():
+            self._errors['p_price'] = self.error_class(['Enter only numeric values'])
+
+        if not min_q.isdigit():
+            self._errors['min_q'] = self.error_class(['Enter only numeric values'])
+
+        return self.cleaned_data

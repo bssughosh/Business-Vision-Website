@@ -25,8 +25,7 @@ def product_upload(request):
             messages.info(request, 'Product uploaded successfully!')
             return redirect('/seller')
         else:
-            messages.info(request, 'Please Upload images only in JPG format and fill out all fields')
-            return redirect('/seller')
+            return render(request, 'seller/product_upload.html', {'form': form})
     else:
         form = ProductUploadForm()
     return render(request, 'seller/product_upload.html', {
@@ -84,8 +83,7 @@ def editpage(request, object_id):
         return redirect('/seller')
 
     else:
-        context = {'form': form,
-                   'error': 'The form was not updated successfully. Please enter in a title and content'}
+        context = {'form': form}
         return render(request, 'seller/edit_prod.html', context)
 
 

@@ -40,7 +40,7 @@ class ProductData(models.Model):
     p_name = models.CharField(max_length=25, choices=PRODUCT_CHOICES, default='Mouse')
     seller_name = models.CharField(max_length=50, null=True)
     s_name = models.CharField(max_length=50, null=True)
-    p_img = fields.ImageField(upload_to='pics')
+    p_img = fields.ImageField(upload_to='pics/')
     p_price = models.CharField(max_length=10)
     min_q = models.CharField(max_length=10)
     p_desc = models.TextField(null=True)

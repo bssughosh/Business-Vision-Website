@@ -33,7 +33,7 @@ class ProductUploadForm(forms.ModelForm):
             ),
             'p_dec': forms.Textarea(
                 attrs={
-                    'class': 'form-control inp',
+                    'class': 'form-control inp1',
                 }
             ),
         }

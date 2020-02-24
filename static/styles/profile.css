@@ -6,6 +6,13 @@
     transform: translate(-50%, -50%);
 }
 
+.main1 {
+    margin-top: 40px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
 img {
     width: 200px;
     height: 200px;

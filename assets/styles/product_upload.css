@@ -1,0 +1,14 @@
+.main1{
+    margin-top: 40px;
+    width: 800px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+.main {
+    margin-top: 40px;
+    width: 800px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}

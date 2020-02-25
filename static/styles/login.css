@@ -1,5 +1,19 @@
-.dropbtn {
 
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Poppins-Regular, sans-serif;
+}
+.dropbtn {
     color: white;
     padding: 5px;
     text_decoration: none;
@@ -43,21 +57,6 @@
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-}
-
-
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    height: 100%;
-    font-family: Poppins-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/

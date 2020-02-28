@@ -17,7 +17,12 @@
                             <a class="card-link clicker" href="/login">{{ i.p_name }}</a>
                         {% endif %}
                     </div>
-                    <a class="stretched-link" href="/cust/description/{{ i.id }}"></a>
+                    {% if user.is_authenticated %}
+                        <a class="stretched-link" href="/cust/description/{{ i.id }}"></a>
+                    {% else %}
+                        <a class="stretched-link" href="/login"></a>
+                    {% endif %}
+
                 </div>
             </div>
         {% endfor %}

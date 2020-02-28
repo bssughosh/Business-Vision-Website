@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from accounts.models import SellerData
 from django.contrib import messages
-
+from carts.models import PCart, Quantity
 
 # Create your views here.
 def c1(request):
@@ -29,7 +29,19 @@ def dis(request):
 
 def desc(request, object_id):
     product = ProductData.objects.get(id=object_id)
-    list_products = ProductData.objects.filter(p_name__icontains=product.p_name)
+    list_products = ProductData.objects.filter(p_name__icontains=product.p_name).order_by('-p_price')
+    if request.method == 'POST' and 'deleter' in request.POST:
+        Q = request.POST.get('quant', product.min_q)
+        num_res = PCart.objects.filter(user=request.user.email).count()
+        if num_res == 0:
+            p = PCart(user=request.user.email)
+            p.save()
+        q = Quantity(min_q=Q)
+        q.save()
+        p1 = PCart.objects.get(user__iexact=request.user.email)
+        p1.p_name.add(list_products[0])
+        p1.quant.add(q)
+        p1.save()
     return render(request, 'customer/product_description.html',
                   {'data': product, 'listdata': list_products})
 

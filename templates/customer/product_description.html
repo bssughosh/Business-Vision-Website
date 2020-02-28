@@ -1,9 +1,9 @@
 {% extends 'customer/base.html' %}
 {% load static %}
 {% block content %}
-    <link rel="stylesheet" href="{% static 'styles/product_description.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product_description.css' %}">
 
-    <div class="container">
+    <div class="container wrapper">
         <div class="row">
             <div class="col-sm">
                 <div class="container">
@@ -11,7 +11,7 @@
                         <div class="col-sm">
                             <img src="{{ data.p_img.url }}" class="limg" alt="">
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm w1">
                             <h3>{{ data.p_name }}</h3>
                         </div>
                     </div>
@@ -53,6 +53,10 @@
             </div>
         </div>
     </div>
-
+    <form method="post">
+        {% csrf_token %}
+        <label for="quant"></label><input type="number" id="quant" name="quant" min="{{ data.min_q }}" value="{{ data.min_q }}">
+        <button type="submit" name="deleter" class="btn btn-danger">Add to cart</button>
+    </form>
     <script type="text/javascript" src="{% static 'scripts/product_description.js' %}"></script>
 {% endblock %}

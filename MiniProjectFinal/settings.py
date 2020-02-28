@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'search',
     'smartfields',
     'widget_tweaks',
+    'carts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

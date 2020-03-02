@@ -7,6 +7,7 @@ from accounts.models import SellerData
 from django.contrib import messages
 from carts.models import PCart, Quantity
 
+
 # Create your views here.
 def c1(request):
     return render(request, 'customer/c1.html')
@@ -14,11 +15,11 @@ def c1(request):
 
 def dis(request):
     x = ProductData.objects.all()
-    l = len(list(x))
-    c = []
-    for i in range(0, l):
-        string = 'obj-' + str(i)
-        c.append(string)
+    # l = len(list(x))
+    # c = []
+    # for i in range(0, l):
+    #     string = 'obj-' + str(i)
+    #     c.append(string)
     if request.method == 'POST':
         for i in c:
             y = request.POST.get(i, False)

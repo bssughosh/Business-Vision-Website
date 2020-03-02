@@ -4,15 +4,18 @@
 {% block content %}
 
     <link rel="stylesheet" href="{% static 'styles/product_display.css' %}">
-    <div class="wrapper grid">
-        {% for i in prods %}
-            <div class="item">
-                <img src="{{ i.p_img.url }}" alt="Image"><br>
-                <a class="clicker" href="/cust/description/{{ i.id }}">{{ i.p_name }}</a>
-            </div>
-        {% endfor %}
-    </div>
-    <script type="text/javascript" src="{% static 'scripts/product_display.js' %}"></script>
-
+    {% if not tot == 0 %}
+        <div class="wrapper grid">
+            {% for i in prods %}
+                <div class="item">
+                    <img src="{{ i.p_img.url }}" alt="Image"><br>
+                    <a class="clicker" href="/cust/description/{{ i.id }}">{{ i.p_name }}</a>
+                </div>
+            {% endfor %}
+        </div>
+        <script type="text/javascript" src="{% static 'scripts/product_display.js' %}"></script>
+    {% else %}
+        <h2>No Products found</h2>
+    {% endif %}
 
 {% endblock %}

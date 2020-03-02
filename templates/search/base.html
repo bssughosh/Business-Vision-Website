@@ -4,31 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Query</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    {#    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">#}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/homestyles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/nav.css' %}">
+    <style>
+
+        body {
+            background: gray;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">Business Vision</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Business Vision</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    {% include 'search/search-form.html' %}
-    <div class="collapse navbar-collapse d-flex flex-row-reverse align-items-center" id="navbarToggler">
-        <ul class="navbar-nav d-flex align-items-center">
+
+    <div class="collapse navbar-collapse" id="navbarToggler">
+        <div class="navbar-nav mr-auto navbar-right" style="margin-left: 60%;">
+            <ul class="navbar-nav mr-auto" id="sr">
+                {% include 'search/search-form.html' %}
+            </ul>
             {% if not user.is_authenticated %}
-                <li><a href="/login">Login</a></li>
+                <button class="btn btn-default" style="color: white;" type="button"
+                        onclick="window.location.href='/login'">
+                    Login<span class="caret"></span></button>
+
             {% else %}
-                <li><a href="#">Hello,<br>{{ user.first_name }}</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <button class="btn btn-default" style="color: white;" type="button"
+                        onclick="window.location.href='/cart'">
+                    Cart<span class="caret"></span></button>
+                <div class="nav-item dropdown" style="list-style-type: none;">
+                    <button class="btn btn-default" type="button" id="btn-dp" data-toggle="dropdown"
+                            data-hover="dropdown" style="color: white;">
+                        {{ user.first_name }}<span class="caret"></span>
+                    </button>
+                    {% if user.last_name == '1' %}
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="dropdown-item" href="/cust/profile">Profile</a></li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    {% else %}
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="dropdown-item" href="/seller/profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="/seller/upload">Upload Product</a></li>
+                            <li><a class="dropdown-item" href="/seller/my_prod">View my Products</a></li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
             {% endif %}
-        </ul>
+        </div>
+
     </div>
 </nav>
-
 
 {% block content %}
 

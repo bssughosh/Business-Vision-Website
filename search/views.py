@@ -13,5 +13,5 @@ def search(request):
     if query is not None:
         lookups = Q(p_name__icontains=query) | Q(p_desc__icontains=query)
         x = ProductData.objects.filter(lookups).distinct()
-        return render(request, 'search/search-display.html', {'prods': x})
-    return render(request, 'search/search-display.html', {'prods': x})
+        return render(request, 'search/search-display.html', {'prods': x, 'tot': len(x)})
+    return render(request, 'search/search-display.html', {'prods': x, 'tot': len(x)})

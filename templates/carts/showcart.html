@@ -2,19 +2,68 @@
 {% load static %}
 
 {% block content %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+        .card {
+            width: 800px;
+            border-radius: 20px;
+        }
 
-    <div class="container">
-        {% for i in prod %}
-            <div class="row">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
+        .wrapper {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
 
+        img {
+            height: 75px;
+            width: 75px;
+        }
+
+        .card-text {
+            font-size: 10px;
+        }
+    </style>
+    {% if not total == 0 %}
+        <div class="wrapper" style="padding-top: 50px">
+            {% for a in prod.p_name.all %}{% for b in prod.quant.all %}
+                {% if forloop.counter == forloop.parentloop.counter %}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-around align-items-center">
+                                <img src="{{ a.p_img.url }}" alt="{{ a.p_name }}">
+                                <h4 class="card-title">
+                                    {{ a.p_name }}
+                                </h4>
+                                <button class="deleter btn btn-danger" type="submit"
+                                        onclick="window.location='/cart/{{ a.id }}/{{ b.id }}';">Remove
+                                </button>
+                            </div>
+                            <br>
+
+                            <div class="d-flex justify-content-around div2">
+                                <p class="card-text"><b>Seller Name</b> - {{ a.s_name }}</p>
+                                <p class="card-text"><b>Quantity Purchased</b> - {{ b.min_q }}</p>
+                                <p class="card-text"><b>Price of Item</b> - <i class="fa fa-inr"></i>{{ a.p_price }}</p>
+                            </div>
                         </div>
                     </div>
+                {% endif %}
+            {% endfor %}{% endfor %}
+            <hr style="width: 800px">
+            <div class="card">
+                <div class="card-body d-flex justify-content-end align-items-center">
+                    <h3 class="card-title">Total Amount to be Paid = <i class="fa fa-inr"></i>{{ total }}</h3>
                 </div>
             </div>
-        {% endfor %}
-    </div>
-
+        </div>
+    {% else %}
+        <div class="wrapper" style="padding-top: 50px">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">No items in Cart</h3>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

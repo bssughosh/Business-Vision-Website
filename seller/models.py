@@ -63,3 +63,11 @@ class ProductData(models.Model):
         super().save(*args, **kwargs)
 
 
+class UsersRated(models.Model):
+    user = models.CharField(max_length=50, null=True)
+
+
+class Rating(models.Model):
+    users = models.ManyToManyField(UsersRated)
+    seller = models.CharField(max_length=50, null=True)
+    rate = models.IntegerField(default=0)

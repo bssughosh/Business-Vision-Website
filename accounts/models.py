@@ -21,3 +21,4 @@ class SellerData(models.Model):
     address = models.TextField(max_length=200)
     state = models.CharField(max_length=100)
     pincode = models.CharField(max_length=8)
+    rating = models.IntegerField(default=0)

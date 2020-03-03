@@ -2,62 +2,263 @@
 {% load static %}
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles/product_description.css' %}">
+    <style>
+        .rating {
+            float: left;
+        }
 
-    <div class="container wrapper">
-        <div class="row">
-            <div class="col-sm">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm">
-                            <img src="{{ listdata.last.p_img.url }}" class="limg" alt="">
+        .rating:not(:checked) > input {
+            position: absolute;
+            top: -9999px;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        .rating:not(:checked) > label {
+            float: right;
+            width: 1em;
+            padding: 0 .1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 200%;
+            line-height: 1.2;
+            color: #DDD;
+            text-shadow: 1px 1px #BBB, 2px 2px #666, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating:not(:checked) > label:before {
+            content: '★ ';
+        }
+
+        .rating > input:checked ~ label {
+            color: #F70;
+            text-shadow: 1px 1px #C60, 2px 2px #940, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating:not(:checked) > label:hover,
+        .rating:not(:checked) > label:hover ~ label {
+            color: gold;
+            text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating > input:checked + label:hover,
+        .rating > input:checked + label:hover ~ label,
+        .rating > input:checked ~ label:hover,
+        .rating > input:checked ~ label:hover ~ label,
+        .rating > label:hover ~ input:checked ~ label {
+            color: #EA0;
+            text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0, 0, 0, .5);
+        }
+
+        .rating > label:active {
+            position: relative;
+            top: 2px;
+            left: 2px;
+        }
+    </style>
+    {% if t == 0 %}
+        <div class="container wrapper">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <img src="{{ listdata.0.p_img.url }}" class="limg" alt="">
+                            </div>
+                            <div class="col-sm w1">
+                                <h3>{{ listdata.0.p_name }}</h3>
+                            </div>
                         </div>
-                        <div class="col-sm w1">
-                            <h3>{{ listdata.last.p_name }}</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <hr>
-                            <h6>Minimum quantity to be purchased : {{ listdata.last.min_q }}</h6>
-                            <hr>
+                        <div class="row">
+                            <div class="col-sm">
+                                <hr>
+                                <h6>Minimum quantity to be purchased : {{ listdata.0.min_q }}</h6>
+                                <hr>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm">
-                <p class="font-weight-bold">Seller selling {{ listdata.last.p_name }}</p>
-                <table class="table table-striped">
-                    <thead class="table-dark">
-                    <tr class="table-row">
-                        <th>Seller Name</th>
-                        <th>Price</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for d in listdata %}
-                        <tr class="table-row" onclick="window.location='{{ d.seller_name }}';">
-                            <td><a>{{ d.s_name }}</a></td>
-                            <td>{{ d.p_price }}</td>
+                <div class="col-sm">
+                    <p class="font-weight-bold">Seller selling {{ listdata.0.p_name }}</p>
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                        <tr class="table-row">
+                            <th>Seller Name</th>
+                            <th>Price</th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {% for d in listdata %}
+                            <tr class="table-row" onclick="window.location='/cust/description1/{{ d.id }}';">
+                                <td><a>{{ d.s_name }}</a></td>
+                                <td>{{ d.p_price }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm">
-                <h6>{{ listdata.last.p_desc }}</h6>
-            </div>
-            <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <h6>{{ listdata.0.p_desc }}</h6>
+                </div>
+                <div class="col-sm">
 
+                </div>
             </div>
         </div>
-    </div>
-    <form method="post">
+        <form method="post">
+            {% csrf_token %}
+            <label for="quant"></label><input type="number" id="quant" name="quant" min="{{ listdata.0.min_q }}"
+                                              value="{{ listdata.0.min_q }}">
+            <button type="submit" name="deleter" class="btn btn-danger">Add to cart</button>
+        </form>
+
+    {% endif %}
+    {% if t == 1 %}
+        <div class="container wrapper">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <img src="{{ data.p_img.url }}" class="limg" alt="">
+                            </div>
+                            <div class="col-sm w1">
+                                <h3>{{ data.p_name }}</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <hr>
+                                <h6>Minimum quantity to be purchased : {{ data.min_q }}</h6>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <p class="font-weight-bold">Seller selling {{ data.p_name }}</p>
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                        <tr class="table-row">
+                            <th>Seller Name</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for d in listdata %}
+                            <tr class="table-row" onclick="window.location='/cust/description1/{{ d.id }}';">
+                                <td><a>{{ d.s_name }}</a></td>
+                                <td>{{ d.p_price }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <h6>{{ data.p_desc }}</h6>
+                </div>
+                <div class="col-sm">
+
+                </div>
+            </div>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <label for="quant"></label><input type="number" id="quant" name="quant" min="{{ data.min_q }}"
+                                              value="{{ data.min_q }}">
+            <button type="submit" name="deleter" class="btn btn-danger">Add to cart</button>
+        </form>
+
+    {% endif %}
+    <form method="post" id="myForm">
         {% csrf_token %}
-        <label for="quant"></label><input type="number" id="quant" name="quant" min="{{ listdata.last.min_q }}"
-                                          value="{{ listdata.last.min_q }}">
-        <button type="submit" name="deleter" class="btn btn-danger">Add to cart</button>
+        <fieldset class="rating">
+            {% if co == 5 %}
+                <input type="radio" id="star5" name="rating" value="5" checked/><label for="star5" title="Rocks!">5
+                stars</label>
+                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
+                stars</label>
+                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
+                stars</label>
+                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
+                star</label>
+            {% endif %}
+            {% if co == 4 %}
+                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
+                stars</label>
+                <input type="radio" id="star4" name="rating" value="4" checked/><label for="star4" title="Pretty good">4
+                stars</label>
+                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
+                stars</label>
+                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
+                star</label>
+            {% endif %}
+            {% if co == 3 %}
+                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
+                stars</label>
+                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
+                stars</label>
+                <input type="radio" id="star3" name="rating" value="3" checked/><label for="star3" title="Meh">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
+                stars</label>
+                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
+                star</label>
+            {% endif %}
+            {% if co == 2 %}
+                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
+                stars</label>
+                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
+                stars</label>
+                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2" checked/><label for="star2" title="Kinda bad">2
+                stars</label>
+                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
+                star</label>
+            {% endif %}
+            {% if co == 1 %}
+                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
+                stars</label>
+                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
+                stars</label>
+                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
+                stars</label>
+                <input type="radio" id="star1" name="rating" value="1" checked/><label for="star1" title="Sucks big time">1
+                star</label>
+            {% endif %}
+            {% if co == 0 %}
+                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
+                stars</label>
+                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
+                stars</label>
+                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
+                stars</label>
+                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
+                star</label>
+            {% endif %}
+        </fieldset>
     </form>
+    <script>
+        $(document).ready(function () {
+            $('#myForm input').on('change', function () {
+                var x = ($("input[name='rating']:checked", "#myForm").val());
+                var s = "";
+                if ("{{ t }}" === "0") {
+                    s = "{{ listdata.0.id }}"
+                } else {
+                    s = "{{ data.id }}"
+                }
+                var URL = "/cust/rating/" + s + "/" + x;
+                window.location.href = URL;
+            });
+        });
+    </script>
     <script type="text/javascript" src="{% static 'scripts/product_description.js' %}"></script>
 {% endblock %}

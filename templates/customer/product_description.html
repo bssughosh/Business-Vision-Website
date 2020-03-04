@@ -174,6 +174,9 @@
         </form>
 
     {% endif %}
+    {% if user.email in us %}
+        <h2>KK</h2>
+    {% endif %}
     <form method="post" id="myForm">
         {% csrf_token %}
         <fieldset class="rating">
@@ -204,7 +207,8 @@
                 stars</label>
                 <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
                 stars</label>
-                <input type="radio" id="star3" name="rating" value="3" checked/><label for="star3" title="Meh">3 stars</label>
+                <input type="radio" id="star3" name="rating" value="3" checked/>
+                <label for="star3" title="Meh">3 stars</label>
                 <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
                 stars</label>
                 <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
@@ -229,8 +233,9 @@
                 <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
                 <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
                 stars</label>
-                <input type="radio" id="star1" name="rating" value="1" checked/><label for="star1" title="Sucks big time">1
-                star</label>
+                <input type="radio" id="star1" name="rating" value="1" checked/>
+                <label for="star1" title="Sucks big time">1
+                    star</label>
             {% endif %}
             {% if co == 0 %}
                 <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
@@ -248,15 +253,14 @@
     <script>
         $(document).ready(function () {
             $('#myForm input').on('change', function () {
-                var x = ($("input[name='rating']:checked", "#myForm").val());
+                var x = $("input[name='rating']:checked", "#myForm").val();
                 var s = "";
                 if ("{{ t }}" === "0") {
                     s = "{{ listdata.0.id }}"
                 } else {
                     s = "{{ data.id }}"
                 }
-                var URL = "/cust/rating/" + s + "/" + x;
-                window.location.href = URL;
+                window.location.href = "/cust/rating/" + s + "/" + x;
             });
         });
     </script>

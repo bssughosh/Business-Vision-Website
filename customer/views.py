@@ -36,8 +36,12 @@ def desc(request, object_id):
     num_res1 = Rating.objects.filter(seller=s).count()
     if num_res1 == 0:
         co = 0
+        us = []
     else:
         co = Rating.objects.filter(seller=s).values()[0]['rate']
+        us1 = Rating.objects.get(seller=s)
+        us = us1.users.values_list()
+        print(us)
     if request.method == 'POST' and 'deleter' in request.POST:
         Q = request.POST.get('quant', list_products[0].min_q)
         num_res = PCart.objects.filter(user=request.user.email).count()
@@ -51,7 +55,7 @@ def desc(request, object_id):
         p1.quant.add(q)
         p1.save()
     return render(request, 'customer/product_description.html',
-                  {'data': product, 'listdata': list_products, 't': 0, 'co': co})
+                  {'data': product, 'listdata': list_products, 't': 0, 'co': co, 'us': us})
 
 
 def desc1(request, object_id):
@@ -101,12 +105,19 @@ def rate(request, p, r):
         t = Rating(seller=s, rate=r)
         t.save()
     t1 = Rating.objects.get(seller__iexact=s)
-    if not (u in t1.users.values_list()):
+    f = False
+    for i in t1.users.values():
+        if u == i['user']:
+            f = True
+            break
+    if f:
+        u1 = UsersRated.objects.get(user__iexact=u)
+    else:
         u1 = UsersRated(user=u)
         u1.save()
-        t1.users.add(u1)
-        r1 = t1.rate
-        r1 = (r1 + r) // 2
-        t1.rate = r1
-        t1.save()
+    t1.users.add(u1)
+    r1 = t1.rate
+    r1 = (r1 + r) // 2
+    t1.rate = r1
+    t1.save()
     return redirect('/cust/description1/' + str(p) + '/')

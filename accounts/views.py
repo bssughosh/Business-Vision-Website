@@ -83,7 +83,6 @@ def seller_regis(request):
         cn = c.upper()
         url = 'https://appyflow.in/api/verifyGST?gstNo=' + g + '&key_secret=' + secret_key
         x = requests.get(url).json()
-        print(x)
         if 'error' in x.keys():
             if x['error']:
                 messages.info(request, 'GST Details not matching')

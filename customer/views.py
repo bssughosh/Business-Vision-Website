@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from seller.models import ProductData, Rating, UsersRated
-from accounts.models import UserData
+from accounts.models import UserData, SellerData
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from accounts.models import SellerData
@@ -30,6 +30,7 @@ def dis(request):
 
 def desc(request, object_id):
     product = ProductData.objects.get(id=object_id)
+    sellers = SellerData.objects.all()
     list_products = ProductData.objects.filter(p_name__icontains=product.p_name).order_by('-p_price')
     p1 = ProductData.objects.filter(id=list_products[0].id).values()
     s = p1[0]['seller_name']
@@ -41,7 +42,6 @@ def desc(request, object_id):
         co = Rating.objects.filter(seller=s).values()[0]['rate']
         us1 = Rating.objects.get(seller=s)
         us = us1.users.values_list()
-        print(us)
     if request.method == 'POST' and 'deleter' in request.POST:
         Q = request.POST.get('quant', list_products[0].min_q)
         num_res = PCart.objects.filter(user=request.user.email).count()
@@ -55,7 +55,7 @@ def desc(request, object_id):
         p1.quant.add(q)
         p1.save()
     return render(request, 'customer/product_description.html',
-                  {'data': product, 'listdata': list_products, 't': 0, 'co': co, 'us': us})
+                  {'data': product, 'listdata': list_products, 't': 0, 'co': co, 'us': us, 'sellers':sellers})
 
 
 def desc1(request, object_id):

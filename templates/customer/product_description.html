@@ -106,13 +106,130 @@
 
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm">
+                    <h3>Seller Details</h3>
+                    <p>Seller Name - {{ listdata.0.s_name }}</p>
+                    {% for i in sellers %}
+                        {% if i.email == listdata.0.seller_name %}
+                            <p>Seller Location - {{ i.state }}, {{ i.pincode }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-sm">
+                    <form method="post" id="myForm">
+                        {% csrf_token %}
+                        <fieldset class="rating">
+                            {% if co == 5 %}
+                                <input type="radio" id="star5" name="rating" value="5" checked/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 4 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4" checked/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 3 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3" checked/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 2 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2" checked/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 1 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1" checked/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 0 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <form method="post">
+                        {% csrf_token %}
+                        <label for="quant"></label><input type="number" id="quant" name="quant"
+                                                          min="{{ listdata.0.min_q }}"
+                                                          value="{{ listdata.0.min_q }}" class="form-control-sm">
+                        <button type="submit" name="deleter" class="btn-sm btn-danger">Add to cart</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <form method="post">
-            {% csrf_token %}
-            <label for="quant"></label><input type="number" id="quant" name="quant" min="{{ listdata.0.min_q }}"
-                                              value="{{ listdata.0.min_q }}">
-            <button type="submit" name="deleter" class="btn btn-danger">Add to cart</button>
-        </form>
 
     {% endif %}
     {% if t == 1 %}
@@ -165,91 +282,132 @@
 
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm">
+                    <h3>Seller Details</h3>
+                    <p>Seller Name - {{ data.s_name }}</p>
+                    {% for i in sellers %}
+                        {% if i.email == data.seller_name %}
+                            <p>Seller Location - {{ i.state }}, {{ i.pincode }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-sm">
+                    <form method="post" id="myForm">
+                        {% csrf_token %}
+                        <fieldset class="rating">
+                            {% if co == 5 %}
+                                <input type="radio" id="star5" name="rating" value="5" checked/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 4 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4" checked/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 3 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3" checked/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 2 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2" checked/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 1 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1" checked/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                            {% if co == 0 %}
+                                <input type="radio" id="star5" name="rating" value="5"/>
+                                <label for="star5" title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4"/>
+                                <label for="star4" title="Pretty good">4
+                                    stars</label>
+                                <input type="radio" id="star3" name="rating" value="3"/>
+                                <label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2"/>
+                                <label for="star2" title="Kinda bad">2
+                                    stars</label>
+                                <input type="radio" id="star1" name="rating" value="1"/>
+                                <label for="star1" title="Sucks big time">1
+                                    star</label>
+                            {% endif %}
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <form method="post">
+                        {% csrf_token %}
+                        <label for="quant"></label><input type="number" id="quant" name="quant"
+                                                          min="{{ data.min_q }}"
+                                                          value="{{ data.min_q }}" class="form-control-sm">
+                        <button type="submit" name="deleter" class="btn-sm btn-danger">Add to cart</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <form method="post">
-            {% csrf_token %}
-            <label for="quant"></label><input type="number" id="quant" name="quant" min="{{ data.min_q }}"
-                                              value="{{ data.min_q }}">
-            <button type="submit" name="deleter" class="btn btn-danger">Add to cart</button>
-        </form>
+    {% endif %}
 
-    {% endif %}
-    {% if user.email in us %}
-        <h2>KK</h2>
-    {% endif %}
-    <form method="post" id="myForm">
-        {% csrf_token %}
-        <fieldset class="rating">
-            {% if co == 5 %}
-                <input type="radio" id="star5" name="rating" value="5" checked/><label for="star5" title="Rocks!">5
-                stars</label>
-                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
-                stars</label>
-                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
-                stars</label>
-                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
-                star</label>
-            {% endif %}
-            {% if co == 4 %}
-                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
-                stars</label>
-                <input type="radio" id="star4" name="rating" value="4" checked/><label for="star4" title="Pretty good">4
-                stars</label>
-                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
-                stars</label>
-                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
-                star</label>
-            {% endif %}
-            {% if co == 3 %}
-                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
-                stars</label>
-                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
-                stars</label>
-                <input type="radio" id="star3" name="rating" value="3" checked/>
-                <label for="star3" title="Meh">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
-                stars</label>
-                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
-                star</label>
-            {% endif %}
-            {% if co == 2 %}
-                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
-                stars</label>
-                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
-                stars</label>
-                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2" checked/><label for="star2" title="Kinda bad">2
-                stars</label>
-                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
-                star</label>
-            {% endif %}
-            {% if co == 1 %}
-                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
-                stars</label>
-                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
-                stars</label>
-                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
-                stars</label>
-                <input type="radio" id="star1" name="rating" value="1" checked/>
-                <label for="star1" title="Sucks big time">1
-                    star</label>
-            {% endif %}
-            {% if co == 0 %}
-                <input type="radio" id="star5" name="rating" value="5"/><label for="star5" title="Rocks!">5
-                stars</label>
-                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Pretty good">4
-                stars</label>
-                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Meh">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Kinda bad">2
-                stars</label>
-                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Sucks big time">1
-                star</label>
-            {% endif %}
-        </fieldset>
-    </form>
     <script>
         $(document).ready(function () {
             $('#myForm input').on('change', function () {

@@ -13,7 +13,7 @@ configparser==4.0.2
 constantly==15.1.0
 cryptography==2.8
 daphne==2.4.1
-Django==2.2.5
+Django==2.2.10
 django-bootstrap-forms==0.1
 django-braces==1.13.0
 django-collectionfield==0.0.4

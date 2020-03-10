@@ -7,10 +7,13 @@ import string
 class ProductUploadForm(forms.ModelForm):
     class Meta:
         model = ProductData
-        fields = ('p_name', 'p_img', 'p_price', 'min_q', 'p_desc')
+        fields = ('p_name', 'p_img', 'p_img2', 'p_img3', 'p_img4', 'p_price', 'min_q', 'p_desc')
         labels = {
             'p_name': _('Enter Product Name'),
             'p_img': _('Provide Image of Product'),
+            'p_img2': _('Provide Image of Product'),
+            'p_img3': _('Provide Image of Product'),
+            'p_img4': _('Provide Image of Product'),
             'p_price': _('Enter Product Price'),
             'min_q': _('Enter Minimum quantity to be purchased'),
             'p_desc': _('Enter Product Description'),

@@ -3,8 +3,10 @@ from io import BytesIO
 from PIL import Image
 from django.core.files import File
 from smartfields import fields
-from django.db.models.signals import pre_delete
+from django.db.models.signals import pre_delete, post_save
 from django.dispatch.dispatcher import receiver
+from django.conf import settings
+import os
 
 
 # image compression method
@@ -14,6 +16,10 @@ def compress(image):
     im.save(im_io, 'JPEG', quality=40)
     new_image = File(im_io, name=image.name)
     return new_image
+
+
+def get_name(instance, filename):
+    return "{}/{}".format(instance.id, filename)
 
 
 # Create your models here.
@@ -40,7 +46,10 @@ class ProductData(models.Model):
     p_name = models.CharField(max_length=25, choices=PRODUCT_CHOICES, default='Mouse')
     seller_name = models.CharField(max_length=50, null=True)
     s_name = models.CharField(max_length=50, null=True)
-    p_img = fields.ImageField(upload_to='pics/')
+    p_img = fields.ImageField(upload_to='pics')
+    p_img2 = fields.ImageField(upload_to='pics', null=True)
+    p_img3 = fields.ImageField(upload_to='pics', null=True)
+    p_img4 = fields.ImageField(upload_to='pics', null=True)
     p_price = models.CharField(max_length=10)
     min_q = models.CharField(max_length=10)
     p_desc = models.TextField(null=True)

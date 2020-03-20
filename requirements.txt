@@ -1,3 +1,4 @@
+reportlab
 asgi-redis==1.4.3
 asgiref==3.2.3
 async-timeout==3.0.1

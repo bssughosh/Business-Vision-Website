@@ -23,45 +23,88 @@
     </style>
 </head>
 <body>
+{% if user.last_name == '1' %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Business Vision</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Business Vision</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
-            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <div class="navbar-nav mr-auto navbar-right" style="margin-left: 60%;">
+                <ul class="navbar-nav mr-auto" id="sr">
+                    {% include 'search/search-form.html' %}
+                </ul>
+                {% if not user.is_authenticated %}
+                    <button class="btn btn-default" style="color: white;" type="button"
+                            onclick="window.location.href='/login'">
+                        Login<span class="caret"></span></button>
+                {% else %}
+                    <button class="btn btn-default" style="color: white;" type="button"
+                            onclick="window.location.href='/cart'">
+                        Cart<span class="caret"></span></button>
+                    <div class="nav-item dropdown" style="list-style-type: none;">
+                        <button class="btn btn-default" type="button" id="btn-dp" data-toggle="dropdown"
+                                data-hover="dropdown" style="color: white;">
+                            {{ user.first_name }}<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="dropdown-item" href="/cust/profile">Profile</a></li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
 
-    <div class="collapse navbar-collapse" id="navbarToggler">
-        <div class="navbar-nav mr-auto navbar-right" style="margin-left: 60%;">
-            <ul class="navbar-nav mr-auto" id="sr">
-                {% include 'search/search-form.html' %}
-            </ul>
-            {% if not user.is_authenticated %}
-                <button class="btn btn-default" style="color: white;" type="button"
-                        onclick="window.location.href='/login'">
-                    Login<span class="caret"></span></button>
-            {% else %}
-                <button class="btn btn-default" style="color: white;" type="button"
-                        onclick="window.location.href='/cart'">
-                    Cart<span class="caret"></span></button>
-                <div class="nav-item dropdown" style="list-style-type: none;">
-                    <button class="btn btn-default" type="button" id="btn-dp" data-toggle="dropdown"
-                            data-hover="dropdown" style="color: white;">
-                        {{ user.first_name }}<span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a class="dropdown-item" href="/cust/profile">Profile</a></li>
-                        <li>
-                            <div class="dropdown-divider"></div>
-                        </li>
-                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-                    </ul>
-                </div>
-            {% endif %}
         </div>
+    </nav>
+{% else %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Business Vision</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    </div>
-</nav>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <div class="navbar-nav mr-auto navbar-right" style="margin-left: 60%;">
+                <ul class="navbar-nav mr-auto" id="sr">
+                    {% include 'search/search-form.html' %}
+                </ul>
+                {% if not user.is_authenticated %}
+                    <button class="btn btn-default" style="color: white;" type="button"
+                            onclick="window.location.href='/login'">
+                        Login<span class="caret"></span></button>
+
+                {% else %}
+                    <button class="btn btn-default" style="color: white;" type="button"
+                            onclick="window.location.href='/cart'">
+                        Cart<span class="caret"></span></button>
+                    <div class="nav-item dropdown" style="list-style-type: none;">
+                        <button class="btn btn-default" type="button" id="btn-dp" data-toggle="dropdown"
+                                data-hover="dropdown" style="color: white;">
+                            {{ user.first_name }}<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="dropdown-item" href="/seller/profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="/seller/upload">Upload Product</a></li>
+                            <li><a class="dropdown-item" href="/seller/my_prod">View my Products</a></li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </nav>
+{% endif %}
 {% block content %}
 
 {% endblock %}

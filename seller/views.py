@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductUploadForm
 from django.contrib.auth.models import User, auth
+from carts.models import PCart, Quantity
 from accounts.models import SellerData
 from .models import ProductData, Rating, UsersRated
 from django.db.models import Q
@@ -38,6 +39,7 @@ def profile(request):
     for y in x:
         if y.email == request.user.username:
             return render(request, 'seller/profile.html', {'data': y})
+    return render(request, 'seller/profile.html')
 
 
 def search(request):

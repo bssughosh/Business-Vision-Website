@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from seller.models import ProductData
 from carts.models import PCart, Quantity
 from django.db.models import Sum
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from MiniProjectFinal.settings import MEDIA_ROOT
 
 
 # Create your views here.
@@ -31,3 +34,10 @@ def removecart(request, object_id, object_id1):
     p1.quant.remove(q2)
     p1.save()
     return redirect('/cart')
+
+
+def check(request):
+    saving = MEDIA_ROOT + r'\uploads\Invoice.pdf'
+    c = canvas.Canvas(filename=saving, pagesize=A4, bottomup=False)
+    c.drawString(10, 10, 'ajsj')
+    return redirect('/')

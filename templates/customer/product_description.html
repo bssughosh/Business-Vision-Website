@@ -320,8 +320,8 @@
                 <div class="col-sm">
                     <h3>Seller Details</h3>
                     <p>Seller Name - {{ data.s_name }}</p>
-                    {% for i in sellers %}
-                        {% if i.email == data.seller_name %}
+                    {% for j in sellers %}
+                        {% if j.email == data.seller_name %}
                             <p>Seller Location - {{ i.state }}, {{ i.pincode }}</p>
                         {% endif %}
                     {% endfor %}

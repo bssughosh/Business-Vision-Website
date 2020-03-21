@@ -2,12 +2,12 @@
     /* background-color: rgb(98, 139, 255); */
     color: white;
     padding: 5px;
-    text_decoration: none;
+    text-decoration: none;
     font-size: 11px !important;
     letter-spacing: 4px;
     opacity: 0.9;
     background: none;
-    ouline: none;
+    outline: none;
     border: none;
 }
 

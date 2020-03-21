@@ -130,6 +130,7 @@ def desc(request, object_id):
 
 def desc1(request, object_id):
     product = ProductData.objects.get(id=object_id)
+    sellers = SellerData.objects.all()
     list_products = ProductData.objects.filter(p_name__icontains=product.p_name).order_by('-p_price')
     p1 = ProductData.objects.filter(id=product.id).values()
     s = p1[0]['seller_name']
@@ -151,4 +152,4 @@ def desc1(request, object_id):
         p1.quant.add(q)
         p1.save()
     return render(request, 'seller/product_description.html',
-                  {'data': product, 'listdata': list_products, 't': 1, 'co': co})
+                  {'data': product, 'listdata': list_products, 't': 1, 'co': co, 'sellers':sellers})

@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'MiniProjectFinal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'miniFinal2',
+        'NAME': 'miniFinal',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Sughosh1999',
         'HOST': '',
         'PORT': '',
         'OPTIONS': {

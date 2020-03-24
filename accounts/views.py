@@ -88,7 +88,7 @@ def seller_regis(request):
                 messages.info(request, 'GST Details not matching')
                 return redirect('/')
         else:
-            tname = x['taxpayerInfo']['lgnm'].upper()
+            tname = x['taxpayerInfo']['tradeNam'].upper()
             st1 = x['taxpayerInfo']['pradr']['addr']['stcd'].upper()
             pin = x['taxpayerInfo']['pradr']['addr']['pncd']
             if str(st) == str(st1) and str(cn) == str(tname) and str(p) == str(pin):

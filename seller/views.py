@@ -15,7 +15,7 @@ def s1(request):
 
 
 def product_upload(request):
-    b = list(SellerData.objects.filter(email=request.user.username).values_list('name', flat=True))
+    b = list(SellerData.objects.filter(email=request.user.username).values_list('comp_name', flat=True))
     if request.method == 'POST':
         form = ProductUploadForm(request.POST, request.FILES)
         if form.is_valid():

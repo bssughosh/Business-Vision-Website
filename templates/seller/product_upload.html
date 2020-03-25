@@ -6,10 +6,10 @@
 {% block content %}
     <link type="text/css" rel="stylesheet" href="{% static 'styles/product_upload.css' %}"/>
     <div class="card main align-middle">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #cfcfcf;">
             Upload your product
         </div>
-        <div class="card-body">
+        <div class="card-body" style="background-color: #eceaea;">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-row">

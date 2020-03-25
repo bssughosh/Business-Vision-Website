@@ -25,23 +25,37 @@ def get_name(instance, filename):
 # Create your models here.
 class ProductData(models.Model):
     PRODUCT_CHOICES = (
-        ('Mouse', 'MOUSE'),
-        ('Keyboard', 'KEYBOARD'),
-        ('Camera', 'CAMERA'),
-        ('Shirt', 'SHIRT'),
-        ('T Shirt', 'T-SHIRT'),
-        ('Jeans', 'JEANS'),
-        ('Trousers', 'TROUSERS'),
-        ('Bat', 'BAT'),
-        ('Ball', 'BALL'),
-        ('Cap', 'CAP'),
-        ('Pen', 'PEN'),
-        ('Pen Holder', 'PEN HOLDER'),
-        ('Paper Weight', 'PAPER WEIGHT'),
-        ('White Board', 'WHITE BOARD'),
-        ('Table Fan', 'TABLE FAN'),
-        ('Showcase', 'SHOWCASE'),
-        ('Air Purifier', 'AIR PURIFIER'),
+        ('Electronics', (
+            ('Camera', 'CAMERA'),
+            ('Fan', 'FAN'),
+            ('Keyboard', 'KEYBOARD'),
+            ('Monitor', 'MONITOR'),
+            ('Mouse', 'MOUSE')
+        ),),
+
+        ('Home Decor', (
+            ('Alarm', 'ALARM'),
+            ('Showcase', 'SHOWCASE'),
+            ('Table Fan', 'TABLE FAN')
+        ),),
+
+        ('Medical', (
+            ('Mask', 'MASK'),
+            ('Sanitizer', 'SANITIZER')
+        ),),
+
+        ('Office Supplies', (
+            ('Folder', 'FOLDER'),
+            ('Paper Weight', 'PAPER WEIGHT'),
+            ('Pen Holder', 'PEN HOLDER'),
+            ('White Board', 'WHITE BOARD')
+        ),),
+
+        ('School Supplies', (
+            ('Bag', 'BAG'),
+            ('Pen', 'PEN'),
+            ('Pencil Box', 'PENCIL BOX')
+        ),)
     )
     p_name = models.CharField(max_length=25, choices=PRODUCT_CHOICES, default='Mouse')
     seller_name = models.CharField(max_length=50, null=True)
@@ -50,7 +64,7 @@ class ProductData(models.Model):
     p_img2 = fields.ImageField(upload_to='pics', null=True)
     p_img3 = fields.ImageField(upload_to='pics', null=True)
     p_img4 = fields.ImageField(upload_to='pics', null=True)
-    p_price = models.CharField(max_length=10)
+    p_price = models.IntegerField()
     min_q = models.CharField(max_length=10)
     p_desc = models.TextField(null=True)
     tag = models.CharField(max_length=20, null=True)

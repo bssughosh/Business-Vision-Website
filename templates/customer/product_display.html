@@ -3,9 +3,9 @@
 
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles/product_display.css' %}">
-    <div class="wrapper grid">
+    <div class="wrapper grid dispBg">
         {% for i in prods %}
-            <div class="item">
+            <div class="item dispBg">
                 <div class="card">
                     <div class="card-img-top">
                         <img src="{{ i.p_img.url }}" alt="Image"><br>

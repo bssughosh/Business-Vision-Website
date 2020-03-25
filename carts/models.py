@@ -8,6 +8,6 @@ class Quantity(models.Model):
 
 
 class PCart(models.Model):
-    user = models.CharField(max_length=20, null=True)
+    user = models.CharField(max_length=50, null=True)
     p_name = models.ManyToManyField(ProductData)
     quant = models.ManyToManyField(Quantity)

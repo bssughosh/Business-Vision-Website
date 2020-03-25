@@ -31,7 +31,7 @@ def dis(request):
 def desc(request, object_id):
     product = ProductData.objects.get(id=object_id)
     sellers = SellerData.objects.all()
-    list_products = ProductData.objects.filter(p_name__icontains=product.p_name).order_by('-p_price')
+    list_products = ProductData.objects.filter(p_name__icontains=product.p_name).order_by('p_price')
     p1 = ProductData.objects.filter(id=list_products[0].id).values()
     s = p1[0]['seller_name']
     num_res1 = Rating.objects.filter(seller=s).count()
@@ -61,7 +61,7 @@ def desc(request, object_id):
 def desc1(request, object_id):
     product = ProductData.objects.get(id=object_id)
     sellers = SellerData.objects.all()
-    list_products = ProductData.objects.filter(p_name__icontains=product.p_name).order_by('-p_price')
+    list_products = ProductData.objects.filter(p_name__icontains=product.p_name).order_by('p_price')
     p1 = ProductData.objects.filter(id=product.id).values()
     s = p1[0]['seller_name']
     num_res1 = Rating.objects.filter(seller=s).count()

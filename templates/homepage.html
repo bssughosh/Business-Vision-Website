@@ -1,10 +1,10 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Business Vision - Home</title>
-    <link rel="icon" href="{% static 'images/Asset1s.png' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     {#    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">#}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -15,7 +15,7 @@
             background-color: #21D4FD;
             background-image: linear-gradient(19deg, #21D4FD 10%, #4682b4 83%);
             width: 100vw;
-            height: 100vh;
+            height: 2000px;
         }
     </style>
 </head>
@@ -23,19 +23,19 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Business Vision</a>
+    <a class="navbar-brand" href="#">Business Vision</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex flex-row-reverse align-items-center" id="navbarToggler">
         <ul class="navbar-nav d-flex align-items-center">
             {% if not user.is_authenticated %}
-                <meta http-equiv="refresh" content="0; url = cust/display"/>
+                <meta http-equiv="refresh" content="0; url = cust/display" />
             {% else %}
                 {% if user.last_name == '1' %}
-                    <meta http-equiv="refresh" content="0; url = cust/"/>
+                    <meta http-equiv="refresh" content="0; url = cust/" />
                 {% else %}
-                    <meta http-equiv="refresh" content="0; url = seller/"/>
+                    <meta http-equiv="refresh" content="0; url = seller/" />
                 {% endif %}
             {% endif %}
         </ul>
@@ -51,4 +51,5 @@
 {% endif %}
 
 </body>
+
 </html>

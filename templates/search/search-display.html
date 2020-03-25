@@ -8,19 +8,18 @@
         <div class="wrapper grid">
             {% for i in prods %}
                 <div class="item">
-                <div class="card">
-                    <div class="card-img-top">
-                        <img src="{{ i.p_img.url }}" alt="Image"><br>
+                    <div class="card">
+                        <div class="card-img-top">
+                            <img src="{{ i.p_img.url }}" alt="Image"><br>
+                        </div>
+                        <div class="card-body">
+                            {% if user.lastname == '1' %}
+                                <a class="clicker stretched-link" href="/cust/description1/{{ i.id }}">{{ i.p_name }}</a>
+                            {% else %}
+                                <a class="clicker stretched-link" href="/seller/description1/{{ i.id }}">{{ i.p_name }}</a>
+                            {% endif %}
+                        </div>
                     </div>
-                    <div class="card-body">
-                        {% if user.lastname == '1' %}
-                            <a class="clicker stretched-link" href="/cust/description1/{{ i.id }}">{{ i.p_name }}</a>
-                        {% else %}
-                            <a class="clicker stretched-link" href="/seller/description1/{{ i.id }}">{{ i.p_name }}</a>
-                        {% endif %}
-                    </div>
-                </div>
-
                 </div>
             {% endfor %}
         </div>

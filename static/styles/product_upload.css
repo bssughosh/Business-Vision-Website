@@ -18,6 +18,13 @@
 /*    background-image: linear-gradient(19deg, #21D4FD 10%, #4682b4 83%);*/
 /*}*/
 
+body {
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 10%, #4682b4 83%);
+    width: 100vw;
+    height: 1200px;
+}
+
 .main1{
     margin-top: 40px;
     width: 800px;

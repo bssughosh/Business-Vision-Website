@@ -14,8 +14,8 @@
 }
 
 img {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     margin: 10px;
 }
 
@@ -23,8 +23,8 @@ img {
     border: 2px black solid;
     border-radius: 5px;
     padding: 10px;
-    background-color: lightblue;
-    box-shadow: 5px 5px 3px grey;
+    background-color: #a4e3f1;
+    box-shadow: 5px 5px 3px #a5a5a5;
 }
 
 .b {
@@ -32,10 +32,10 @@ img {
 }
 
 .ad {
-    background-color: rgba(212, 209, 209, 0.973);
+    background-color: #eceaea;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 5px 5px 3px black;
+    box-shadow: 5px 5px 3px #585656;
     margin-top: 15px;
 }
 

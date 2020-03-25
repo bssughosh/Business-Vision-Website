@@ -3,6 +3,7 @@
 
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles/product_display.css' %}">
+    {% if not total == 0 %}
     <div class="wrapper grid">
         {% for i in prods %}
             <div class="item">
@@ -22,5 +23,9 @@
             </div>
         {% endfor %}
     </div>
+    {% else %}
+        <script>alert("Oops!! Your product list is Empty \nLet's start by uploading some new products...")</script>
+        <meta http-equiv="refresh" content="0; url = /seller/upload" />
+    {% endif %}
     <script type="text/javascript" src="{% static 'scripts/product_display.js' %}"></script>
 {% endblock %}

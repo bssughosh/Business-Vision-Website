@@ -322,7 +322,7 @@
                     <p>Seller Name - {{ data.s_name }}</p>
                     {% for j in sellers %}
                         {% if j.email == data.seller_name %}
-                            <p>Seller Location - {{ i.state }}, {{ i.pincode }}</p>
+                            <p>Seller Location - {{ j.state }}, {{ j.pincode }}</p>
                         {% endif %}
                     {% endfor %}
                 </div>

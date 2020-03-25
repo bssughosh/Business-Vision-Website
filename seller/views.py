@@ -61,7 +61,8 @@ def browse(request):
 def my_prod(request):
     s_email = request.user.username
     p = ProductData.objects.filter(seller_name__exact=s_email)
-    return render(request, 'seller/my_prod.html', {'prods': p})
+    total = len(list(p.values()))
+    return render(request, 'seller/my_prod.html', {'prods': p, 'total':total})
 
 
 def editpage(request, object_id):

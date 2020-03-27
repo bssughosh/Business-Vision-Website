@@ -1,6 +1,6 @@
 # Business Vision
 ##### This is an e-commerce website for sellers who wish to sell goods in wholesale
-###### [Installation Instructios?](#installation)
+###### [Installation Instructions?](#installation)
 This is a website built using Django, HTML, CSS and Javascript. The repository contains 5 django applications, namely,
 
 1. _accounts_

@@ -1,0 +1,16 @@
+name: bv_platform
+dependencies:
+  - python
+  - django
+  - reportlab
+  - numpy
+  - pandas
+  - mysqlclient
+  - Pillow
+  - requests
+  - pip:
+    - django-bootstrap-forms
+    - django-crispy-forms
+    - django-gst-field
+    - django-smartfields
+    - django-widget-tweaks

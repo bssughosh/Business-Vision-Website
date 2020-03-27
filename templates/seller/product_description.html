@@ -55,6 +55,16 @@
             top: 2px;
             left: 2px;
         }
+
+        .carousel-indicators li {
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+        }
+
+        .carousel-indicators {
+            bottom: -35px;
+        }
     </style>
     {% if t == 0 %}
         <div class="container wrapper">
@@ -85,13 +95,13 @@
                                                 <img src="{{ listdata.0.p_img4.url }}" class="limg" alt="">
                                             </div>
                                         </div>
-                                        <a class="carousel-control-prev" href="#myCarousel" role="button"
-                                           data-slide="prev" style="background: dimgray">
+                                        <a class="carousel-control-prev btn-outline-light" href="#myCarousel" role="button"
+                                           data-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="sr-only">Previous</span>
                                         </a>
-                                        <a class="carousel-control-next" href="#myCarousel" role="button"
-                                           data-slide="next" style="background: dimgray">
+                                        <a class="carousel-control-next btn-outline-light" href="#myCarousel" role="button"
+                                           data-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="sr-only">Next</span>
                                         </a>

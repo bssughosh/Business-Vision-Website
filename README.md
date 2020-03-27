@@ -1,6 +1,6 @@
 # Business Vision
 ##### This is an e-commerce website for sellers who wish to sell goods in wholesale
-
+###### [Installation Instructios?](#installation)
 This is a website built using Django, HTML, CSS and Javascript. The repository contains 5 django applications, namely,
 
 1. _accounts_
@@ -56,3 +56,11 @@ It has the following functionalities -
 1. Show details of a product
 
 _Note: The details of the product are shown by default of the seller whose selling price is the least. However, the user may select a different seller to view the details given by other seller._
+
+------------------
+
+## Installation
+1. For installing using conda : 
+  > conda env create -f virtual_platform.yml
+1. For installation using pip :
+  > pip install -r requirements.txt

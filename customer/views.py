@@ -55,7 +55,7 @@ def desc(request, object_id):
         p1.quant.add(q)
         p1.save()
     return render(request, 'customer/product_description.html',
-                  {'data': product, 'listdata': list_products, 't': 0, 'co': co, 'us': us, 'sellers':sellers})
+                  {'data': product, 'listdata': list_products, 't': 0, 'co': co, 'us': us, 'sellers': sellers})
 
 
 def desc1(request, object_id):
@@ -82,7 +82,7 @@ def desc1(request, object_id):
         p1.quant.add(q)
         p1.save()
     return render(request, 'customer/product_description.html',
-                  {'data': product, 'listdata': list_products, 't': 1, 'co': co, 'sellers':sellers})
+                  {'data': product, 'listdata': list_products, 't': 1, 'co': co, 'sellers': sellers})
 
 
 def profile(request):

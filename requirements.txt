@@ -4,3 +4,6 @@ django-smartfields
 pandas
 Pillow
 requests
+django-gst-field
+django-crispy-forms
+django-widget-tweaks
